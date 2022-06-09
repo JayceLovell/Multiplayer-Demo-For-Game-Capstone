@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 
-public class GameController : MonoBehaviour
+public class GameController : NetworkBehaviour
 {
     private int _amountOfPlayers;
     private GameManager gameManager;
     private NetworkManager networkmanager;
 
     public bool IsDebugging=true;
-    public int amountOfPlayers { get { return _amountOfPlayers; } set { _amountOfPlayers = value; } }
+    public int AmountOfPlayers { get { return _amountOfPlayers; } set { _amountOfPlayers = value; } }
 
     // Start is called before the first frame update
     void Start()
@@ -38,5 +38,6 @@ public class GameController : MonoBehaviour
     private void Debugging()
     {
         GameObject.Find("TxtStatus").GetComponent<Text>().text = "Status: " + gameManager.Status;
+        GameObject.Find("TxtHost").GetComponent<Text>().text = "Host Ip: " + gameManager.HostAddress;
     }
 }

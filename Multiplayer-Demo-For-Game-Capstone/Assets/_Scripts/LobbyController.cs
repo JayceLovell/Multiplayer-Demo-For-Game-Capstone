@@ -9,8 +9,12 @@ public class LobbyController : MonoBehaviour
 
     private string _userID;
     private string _hostAddress;
+    private bool isHosting;
     private GameManager _gameManager;
 
+    /// <summary>
+    /// Will contain information for display user information
+    /// </summary>
     public string UserID
     {
         get { return _userID; }
@@ -23,6 +27,18 @@ public class LobbyController : MonoBehaviour
     {
         get { return _hostAddress; }
         set { _hostAddress = value; }
+    }
+    /// <summary>
+    /// If user hosting game or not
+    /// This is for LAN only!!!
+    /// </summary>
+    public bool Hosting
+    {
+        get { return isHosting; }
+        set { 
+            isHosting = value;
+            _gameManager.IsHosting();
+        }
     }
 
     // Start is called before the first frame update
@@ -38,7 +54,7 @@ public class LobbyController : MonoBehaviour
     }
     public void Connect()
     {
-        if(HostAddress == null)
+        if(isHosting)
         {          
             Debug.Log("Hosting Game Selected");
             _gameManager.HostGame(UserID);
