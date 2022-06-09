@@ -6,11 +6,13 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class GameManager : MonoBehaviour
+public class GameManager : NetworkBehaviour
 {
-
+    [SyncVar]
     private string _hostaddress;
+    [SyncVar]
     private string _UserID;
+
     private string _status;
     private NetworkManager _networkManager;
 

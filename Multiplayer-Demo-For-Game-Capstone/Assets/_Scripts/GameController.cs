@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 
 public class GameController : NetworkBehaviour
 {
+    [SerializeField]
     private int _amountOfPlayers;
     private GameManager gameManager;
     private NetworkManager networkmanager;
@@ -13,15 +14,24 @@ public class GameController : NetworkBehaviour
     public bool IsDebugging=true;
     public int AmountOfPlayers { get { return _amountOfPlayers; } set { _amountOfPlayers = value; } }
 
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// is Called before Start
+    /// </summary>
+    void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        networkmanager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
+    }
+    // Start is called before the first frame update
+    void Start()
+    {       
+        AmountOfPlayers = networkmanager.numPlayers;
         if (IsDebugging)
         {
             Debugging();
         }
     }
+
 
     // Update is called once per frame
     void Update()
