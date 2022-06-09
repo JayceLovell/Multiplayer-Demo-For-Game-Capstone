@@ -1,10 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class GameManager : MonoBehaviour
 {
+
+    private string _hostaddress;
+    private string _UserID;
+    private NetworkManager _networkManager;
+
     public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
+    public string UserID
+    {
+        get
+        {   return _UserID;   }
+        set
+        {   _UserID = value;    }
+    }
+    public string HostAddress
+    {
+        get { return _hostaddress; }
+        set { _hostaddress = value; } 
+    }
 
     /// <summary>
     /// Awake is always called before any Start functions
@@ -32,12 +50,23 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>() ;
+        //.GetComponent<MyNetworkManager>();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void HostGame(string _userID)
     {
-        
+        UserID = _userID;
+        _networkManager.StartHost();
+        Debug.Log("Hosting Game");
+    }
+    public void JoinGame(string _userID)
+    {
+        UserID = _userID;
+        if (_hostaddress != null)
+        {
+            _networkManager.networkAddress = _hostaddress;
+        }
+        _networkManager.StartClient();
+        Debug.Log("Joining Game");
     }
 }
