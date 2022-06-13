@@ -12,8 +12,6 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
-    Unity.Mobile.AndroidLogcat.Editor.dll:
-    - Unity.Android.Logcat.AndroidLogcatManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     UnityEditor.Graphs.dll:
@@ -40,6 +38,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.VerticalLayoutGroup
     com.unity.multiplayer-hlapi.Runtime.dll:
     - UnityEngine.Networking.NetworkManager
+    - UnityEngine.Networking.NetworkStartPosition
   sceneClasses:
     Assets/_Scenes/Game.unity:
     - Class: 1
@@ -59,9 +58,9 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11842}
+      Script: {instanceID: 11844}
     - Class: 114
-      Script: {instanceID: 12192}
+      Script: {instanceID: 12194}
     - Class: 114
       Script: {instanceID: 12254}
     - Class: 114
@@ -72,6 +71,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13944}
     - Class: 114
       Script: {instanceID: 14126}
+    - Class: 114
+      Script: {instanceID: 14146}
     - Class: 114
       Script: {instanceID: 14858}
     - Class: 114
@@ -92,7 +93,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 224
       Script: {instanceID: 0}
-    Assets/_Scenes/Lobby.unity:
+    Assets/_Scenes/NewLobby.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -110,11 +111,11 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11842}
+      Script: {instanceID: 11844}
     - Class: 114
-      Script: {instanceID: 12004}
+      Script: {instanceID: 12006}
     - Class: 114
-      Script: {instanceID: 12192}
+      Script: {instanceID: 12194}
     - Class: 114
       Script: {instanceID: 12254}
     - Class: 114
@@ -156,6 +157,12 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
+      Hash: eafb77726b67b7571818a7210a3ce11e
+    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
+    namespaceName: UnityEngine.Networking
+    className: NetworkIdentity
+  - hash:
+      serializedVersion: 2
       Hash: 4bc4346a71a8df53a6b106f68ef3a190
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -180,7 +187,7 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 2163da67692a57374f3057db10f9ff4c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LobbyController
@@ -226,12 +233,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Scrollbar
-  - hash:
-      serializedVersion: 2
-      Hash: eafb77726b67b7571818a7210a3ce11e
-    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
-    namespaceName: UnityEngine.Networking
-    className: NetworkIdentity
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -426,7 +427,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAsset
   - hash:
       serializedVersion: 2
-      Hash: 5d739e088ff97a57ff36fdd6c5c89152
+      Hash: 46061127d31c46c1b6d98691e4bbb13e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameController
@@ -750,6 +751,6 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   platform: 13
   scenePathNames:
+  - Assets/_Scenes/NewLobby.unity
   - Assets/_Scenes/Game.unity
-  - Assets/_Scenes/Lobby.unity
   playerPath: E:/Projects/Multiplayer-Demo-For-Game-Capstone/Multiplayer-Demo-For-Game-Capstone/Builds/NetworkTest.apk

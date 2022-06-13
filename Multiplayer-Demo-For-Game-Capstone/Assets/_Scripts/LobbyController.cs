@@ -10,6 +10,7 @@ public class LobbyController : MonoBehaviour
     private string _userID;
     private string _hostAddress;
     private bool isHosting;
+    [SerializeField]
     private GameManager _gameManager;
 
     /// <summary>
@@ -44,13 +45,8 @@ public class LobbyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         GameObject.Find("txtVersion").GetComponent<Text>().text = "Version: " + Application.version;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
     public void Connect()
     {

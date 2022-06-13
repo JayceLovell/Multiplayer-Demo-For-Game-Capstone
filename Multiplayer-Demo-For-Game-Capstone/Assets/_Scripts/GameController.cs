@@ -8,7 +8,9 @@ public class GameController : NetworkBehaviour
 {
     [SerializeField]
     private int _amountOfPlayers;
-    private GameManager gameManager;
+    [SerializeField]
+    private GameManager _gameManager;
+    [SerializeField]
     private NetworkManager networkmanager;
 
     public bool IsDebugging=true;
@@ -19,12 +21,12 @@ public class GameController : NetworkBehaviour
     /// </summary>
     void Awake()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         networkmanager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
+        _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
     // Start is called before the first frame update
     void Start()
-    {       
+    {
         AmountOfPlayers = networkmanager.numPlayers;
         if (IsDebugging)
         {
@@ -47,7 +49,8 @@ public class GameController : NetworkBehaviour
     /// </summary>
     private void Debugging()
     {
-        GameObject.Find("TxtStatus").GetComponent<Text>().text = "Status: " + gameManager.Status;
-        GameObject.Find("TxtHost").GetComponent<Text>().text = "Host Ip: " + gameManager.HostAddress;
+        Debug.Log("Debuging");
+        GameObject.Find("TxtStatus").GetComponent<Text>().text = "Status: " + _gameManager.Status;
+        GameObject.Find("TxtHost").GetComponent<Text>().text = "Host Ip: " + _gameManager.HostAddress;
     }
 }
