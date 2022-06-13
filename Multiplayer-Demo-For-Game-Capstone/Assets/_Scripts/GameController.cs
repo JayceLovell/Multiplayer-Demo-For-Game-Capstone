@@ -7,10 +7,9 @@ using UnityEngine.Networking;
 public class GameController : NetworkBehaviour
 {
     [SerializeField]
+    [SyncVar]
     private int _amountOfPlayers;
-    [SerializeField]
     private GameManager _gameManager;
-    [SerializeField]
     private NetworkManager networkmanager;
 
     public bool IsDebugging=true;
@@ -38,18 +37,29 @@ public class GameController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void Ready()
     {
 
+    }
+    public void Exit()
+    {
+        if (_gameManager.Status == "Host")
+        {
+            networkmanager.StopHost();
+        }
+        else
+        {
+            networkmanager.StopClient();
+        }
     }
     /// <summary>
     /// method for initilizing debug stuff
     /// </summary>
     private void Debugging()
     {
-        Debug.Log("Debuging");
+        Debug.Log("Debuging Mode On");
         GameObject.Find("TxtStatus").GetComponent<Text>().text = "Status: " + _gameManager.Status;
         GameObject.Find("TxtHost").GetComponent<Text>().text = "Host Ip: " + _gameManager.HostAddress;
     }

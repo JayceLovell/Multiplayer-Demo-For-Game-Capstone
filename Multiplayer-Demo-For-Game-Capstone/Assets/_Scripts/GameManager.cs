@@ -73,9 +73,10 @@ public class GameManager : MonoBehaviour
         if (_hostaddress != null)
         {
             _networkManager.networkAddress = _hostaddress;
+            Debug.Log("Joining Game at address: " + _hostaddress);
         }
         _networkManager.StartClient();
-        Debug.Log("Joining Game");
+        
     }
     public void IsHosting()
     {

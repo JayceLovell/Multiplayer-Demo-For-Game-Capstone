@@ -10,7 +10,6 @@ public class LobbyController : MonoBehaviour
     private string _userID;
     private string _hostAddress;
     private bool isHosting;
-    [SerializeField]
     private GameManager _gameManager;
 
     /// <summary>
@@ -58,6 +57,7 @@ public class LobbyController : MonoBehaviour
         else
         { 
             Debug.Log("Joining Game Selected");
+            _gameManager.HostAddress = HostAddress;
             _gameManager.JoinGame(UserID);
         }
     }
