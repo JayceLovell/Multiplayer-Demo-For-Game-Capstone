@@ -7,13 +7,19 @@ using UnityEngine.Networking;
 public class GameController : NetworkBehaviour
 {
     [SerializeField]
+    [SyncVar]private int _amountOfPlayers;
+    [SerializeField]
+    private List<string> _playerNames;
+    [SerializeField]
     [SyncVar]
-    private int _amountOfPlayers;
+    private float _playerPoints;
     private GameManager _gameManager;
     private NetworkManager networkmanager;
 
     public bool IsDebugging=true;
     public int AmountOfPlayers { get { return _amountOfPlayers; } set { _amountOfPlayers = value; } }
+    public List<string> PlayerNames { get { return _playerNames; } set { _playerNames = value; } }
+    public float PlayerPoints { get { return _playerPoints; } set { _playerPoints = value; } }
 
     /// <summary>
     /// is Called before Start
@@ -37,7 +43,7 @@ public class GameController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-
+            AmountOfPlayers = NetworkServer.connections.Count;
     }
     public void Ready()
     {
