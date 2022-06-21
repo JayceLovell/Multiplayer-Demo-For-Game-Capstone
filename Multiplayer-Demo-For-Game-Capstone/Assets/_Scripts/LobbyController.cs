@@ -44,13 +44,8 @@ public class LobbyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         GameObject.Find("txtVersion").GetComponent<Text>().text = "Version: " + Application.version;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
     public void Connect()
     {
@@ -62,6 +57,7 @@ public class LobbyController : MonoBehaviour
         else
         { 
             Debug.Log("Joining Game Selected");
+            _gameManager.HostAddress = HostAddress;
             _gameManager.JoinGame(UserID);
         }
     }

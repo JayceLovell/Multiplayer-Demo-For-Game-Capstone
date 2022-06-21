@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - GameController
     - GameManager
     - LobbyController
+    - MyNetworkManager
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
@@ -38,8 +39,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Text
     - UnityEngine.UI.Toggle
     - UnityEngine.UI.VerticalLayoutGroup
-    com.unity.multiplayer-hlapi.Runtime.dll:
-    - UnityEngine.Networking.NetworkManager
   sceneClasses:
     Assets/_Scenes/Game.unity:
     - Class: 1
@@ -59,9 +58,9 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11842}
+      Script: {instanceID: 11814}
     - Class: 114
-      Script: {instanceID: 12192}
+      Script: {instanceID: 11846}
     - Class: 114
       Script: {instanceID: 12254}
     - Class: 114
@@ -75,7 +74,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14858}
     - Class: 114
-      Script: {instanceID: 15588}
+      Script: {instanceID: 15590}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -92,7 +91,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 224
       Script: {instanceID: 0}
-    Assets/_Scenes/Lobby.unity:
+    Assets/_Scenes/NewLobby.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -110,19 +109,17 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11842}
+      Script: {instanceID: 11814}
     - Class: 114
-      Script: {instanceID: 12004}
+      Script: {instanceID: 11846}
     - Class: 114
-      Script: {instanceID: 12192}
+      Script: {instanceID: 12008}
     - Class: 114
       Script: {instanceID: 12254}
     - Class: 114
       Script: {instanceID: 12522}
     - Class: 114
       Script: {instanceID: 13050}
-    - Class: 114
-      Script: {instanceID: 13680}
     - Class: 114
       Script: {instanceID: 13944}
     - Class: 114
@@ -134,9 +131,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14858}
     - Class: 114
-      Script: {instanceID: 15588}
+      Script: {instanceID: 14938}
     - Class: 114
-      Script: {instanceID: 15612}
+      Script: {instanceID: 15590}
+    - Class: 114
+      Script: {instanceID: 15614}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -154,6 +153,18 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
+  - hash:
+      serializedVersion: 2
+      Hash: eafb77726b67b7571818a7210a3ce11e
+    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
+    namespaceName: UnityEngine.Networking
+    className: NetworkIdentity
+  - hash:
+      serializedVersion: 2
+      Hash: 699619b86d9359741a4f58540298c80b
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Text
   - hash:
       serializedVersion: 2
       Hash: 4bc4346a71a8df53a6b106f68ef3a190
@@ -216,22 +227,10 @@ ScriptsOnlyBuild:
     className: ActivationTrack
   - hash:
       serializedVersion: 2
-      Hash: 699619b86d9359741a4f58540298c80b
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Text
-  - hash:
-      serializedVersion: 2
       Hash: fd8b23ad3c9e81bc85b197495bc510ac
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Scrollbar
-  - hash:
-      serializedVersion: 2
-      Hash: eafb77726b67b7571818a7210a3ce11e
-    assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
-    namespaceName: UnityEngine.Networking
-    className: NetworkIdentity
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -426,7 +425,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAsset
   - hash:
       serializedVersion: 2
-      Hash: 5d739e088ff97a57ff36fdd6c5c89152
+      Hash: 11232327a4c8fac619287e14bdbfa977
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameController
@@ -618,6 +617,12 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
+      Hash: 204a49b53b8af5e8b8efcb87715063bd
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MyNetworkManager
+  - hash:
+      serializedVersion: 2
       Hash: 1dcb82730d983b77cec736c6ef19f814
     assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
     namespaceName: UnityEngine.Networking
@@ -750,6 +755,6 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   platform: 13
   scenePathNames:
+  - Assets/_Scenes/NewLobby.unity
   - Assets/_Scenes/Game.unity
-  - Assets/_Scenes/Lobby.unity
   playerPath: E:/Projects/Multiplayer-Demo-For-Game-Capstone/Multiplayer-Demo-For-Game-Capstone/Builds/NetworkTest.apk

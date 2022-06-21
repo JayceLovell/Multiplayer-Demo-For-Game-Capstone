@@ -1,13 +1,56 @@
 {
-    "m_SelectedDeviceId": "",
+    "m_SelectedDeviceId": "210f767a",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "210f767a",
+        "name": "com.DefaultCompany.com.unity.template.mobile2D",
+        "processId": 32125,
         "exited": false
     },
     "m_SelectedPriority": 0,
-    "m_KnownPackagesForSerialization": [],
+    "m_KnownPackagesForSerialization": [
+        {
+            "deviceId": "210f767a",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 2664,
+            "exited": true
+        },
+        {
+            "deviceId": "210f767a",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 21472,
+            "exited": true
+        },
+        {
+            "deviceId": "210f767a",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 21473,
+            "exited": true
+        },
+        {
+            "deviceId": "210f767a",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 21469,
+            "exited": true
+        },
+        {
+            "deviceId": "210f767a",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 32123,
+            "exited": true
+        },
+        {
+            "deviceId": "210f767a",
+            "name": "net.oneplus.launcher",
+            "processId": 4607,
+            "exited": false
+        },
+        {
+            "deviceId": "210f767a",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 32125,
+            "exited": false
+        }
+    ],
     "m_Tags": {
         "m_Entries": [
             {
@@ -41,9 +84,20 @@
         ]
     },
     "m_MemoryViewerState": {
-        "MemoryWindowHeight": 0.0,
-        "MemoryWindowWidth": 0.0,
-        "MemoryTypeEnabled": [],
+        "MemoryWindowHeight": 300.0,
+        "MemoryWindowWidth": 170.0,
+        "MemoryTypeEnabled": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
         "MemoryGroup": 1,
         "Behavior": 1
     },

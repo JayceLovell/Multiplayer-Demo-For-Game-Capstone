@@ -6,13 +6,10 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class GameManager : NetworkBehaviour
+public class GameManager : MonoBehaviour
 {
-    [SyncVar]
     private string _hostaddress;
-    [SyncVar]
     private string _UserID;
-
     private string _status;
     private NetworkManager _networkManager;
 
@@ -45,32 +42,27 @@ public class GameManager : NetworkBehaviour
     {
         //Check if instance already exists
         if (instance == null)
-
             //if not, set instance to this
             instance = this;
-
         //If instance already exists and it's not this:
         else if (instance != this)
-
             //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
             Destroy(gameObject);
 
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
-
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        _networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>() ;
-        //.GetComponent<MyNetworkManager>();
+        _networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
+        GetIpAddress();
     }
     public void HostGame(string _userID)
     {
         UserID = _userID;
         Status = "Hosting";
-        _networkManager.networkAddress = HostAddress;
         _networkManager.StartHost();
         Debug.Log("Hosting Game");
     }
@@ -81,13 +73,15 @@ public class GameManager : NetworkBehaviour
         if (_hostaddress != null)
         {
             _networkManager.networkAddress = _hostaddress;
+            Debug.Log("Joining Game at address: " + _hostaddress);
         }
         _networkManager.StartClient();
-        Debug.Log("Joining Game");
+        
     }
     public void IsHosting()
     {
         HostAddress = GetIpAddress();
+        _networkManager.networkAddress = HostAddress;
     }
     /// <summary>
     /// Just to get the ipaddress of the host

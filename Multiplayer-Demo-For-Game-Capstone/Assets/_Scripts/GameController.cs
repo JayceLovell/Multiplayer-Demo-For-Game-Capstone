@@ -7,24 +7,29 @@ using UnityEngine.Networking;
 public class GameController : NetworkBehaviour
 {
     [SerializeField]
-    private int _amountOfPlayers;
-    private GameManager gameManager;
+    [SyncVar]private int _amountOfPlayers;
+
+    [SerializeField]
+    private List<string> _playerNames;
+
+    private GameManager _gameManager;
     private NetworkManager networkmanager;
 
     public bool IsDebugging=true;
     public int AmountOfPlayers { get { return _amountOfPlayers; } set { _amountOfPlayers = value; } }
+    public List<string> PlayerNames { get { return _playerNames; } set { _playerNames = value; } }
 
     /// <summary>
     /// is Called before Start
     /// </summary>
     void Awake()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         networkmanager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
+        _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
     // Start is called before the first frame update
     void Start()
-    {       
+    {
         AmountOfPlayers = networkmanager.numPlayers;
         if (IsDebugging)
         {
@@ -36,18 +41,30 @@ public class GameController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+            AmountOfPlayers = NetworkServer.connections.Count;
     }
     public void Ready()
     {
 
+    }
+    public void Exit()
+    {
+        if (_gameManager.Status == "Host")
+        {
+            networkmanager.StopHost();
+        }
+        else
+        {
+            networkmanager.StopClient();
+        }
     }
     /// <summary>
     /// method for initilizing debug stuff
     /// </summary>
     private void Debugging()
     {
-        GameObject.Find("TxtStatus").GetComponent<Text>().text = "Status: " + gameManager.Status;
-        GameObject.Find("TxtHost").GetComponent<Text>().text = "Host Ip: " + gameManager.HostAddress;
+        Debug.Log("Debuging Mode On");
+        GameObject.Find("TxtStatus").GetComponent<Text>().text = "Status: " + _gameManager.Status;
+        GameObject.Find("TxtHost").GetComponent<Text>().text = "Host Ip: " + _gameManager.HostAddress;
     }
 }
