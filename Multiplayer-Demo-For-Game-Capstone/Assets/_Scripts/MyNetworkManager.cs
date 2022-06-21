@@ -30,7 +30,6 @@ public class MyNetworkManager :NetworkManager
         gameController.PlayerNames.Add(gameManager.UserID);
         GameObject UserConnectID = Instantiate(UserIdPrefab);
         UserConnectID.transform.SetParent(GameObject.Find("Points Leader board").transform);
-        UserConnectID.GetComponent<Text>().text = gameManager.UserID;
         UserConnectID.transform.localScale = new Vector3(1, 1, 1);
         UserConnectID.transform.name = gameManager.UserID;
     }
