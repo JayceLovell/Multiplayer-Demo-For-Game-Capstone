@@ -33,4 +33,12 @@ public class MyNetworkManager :NetworkManager
         UserConnectID.transform.localScale = new Vector3(1, 1, 1);
         UserConnectID.transform.name = gameManager.UserID;
     }
+    public override void OnStopHost()
+    {
+        Debug.Log("On Stop Host Called");
+    }
+    public override void OnStopClient()
+    {
+        Debug.Log("On Stop Client Called");
+    }
 }

@@ -19,6 +19,7 @@ public class GameController : NetworkBehaviour
     public int AmountOfPlayers { get { return _amountOfPlayers; } set { _amountOfPlayers = value; } }
     public List<string> PlayerNames { get { return _playerNames; } set { _playerNames = value; } }
 
+
     /// <summary>
     /// is Called before Start
     /// </summary>
@@ -49,13 +50,15 @@ public class GameController : NetworkBehaviour
     }
     public void Exit()
     {
-        if (_gameManager.Status == "Host")
+        if (_gameManager.Status == "Hosting")
         {
             networkmanager.StopHost();
+            Debug.Log("Ending Host");
         }
         else
         {
             networkmanager.StopClient();
+            Debug.Log("Ending Client");
         }
     }
     /// <summary>

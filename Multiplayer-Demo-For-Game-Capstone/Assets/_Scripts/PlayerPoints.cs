@@ -14,9 +14,9 @@ public class PlayerPoints : NetworkBehaviour
 
     private GameManager _gameManager;
 
-    private float _points;
+    private int _points;
 
-    public float Points
+    public int Points
     {
         get { return _points; }
         set { _points = value; }
