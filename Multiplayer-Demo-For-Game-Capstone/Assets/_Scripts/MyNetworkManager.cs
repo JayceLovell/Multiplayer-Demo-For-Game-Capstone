@@ -29,6 +29,9 @@ public class MyNetworkManager :NetworkManager
         UserConnectID.transform.SetParent(GameObject.Find("Points Leader board").transform);
         UserConnectID.transform.localScale = new Vector3(1, 1, 1);
         UserConnectID.transform.name = gameManager.UserID;
+        
+        //Refresh leader board with new players
+        GameObject.Find("Points Leader board").GetComponent<PointLeaderboardManager>().RefreshBoard();
     }
     public override void OnStopHost()
     {

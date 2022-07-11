@@ -30,6 +30,10 @@ public class MusicPlayer : MonoBehaviour
             Music.Add(clip);
         }
     }
+    /// <summary>
+    /// Grabs song randomly from Music List.
+    /// With the use of substring gets the name of the song before the first - in the file name
+    /// </summary>
     public void Play()
     {
         int index = Random.Range(0, Music.Count);

@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class PlayerPoints : NetworkBehaviour
+public class PlayerPoints : MonoBehaviour
 {
     /// <summary>
     /// text box to display username and points
@@ -14,7 +13,7 @@ public class PlayerPoints : NetworkBehaviour
 
     private GameManager _gameManager;
 
-    private int _points;
+    public int _points;
 
     public int Points
     {
@@ -34,10 +33,6 @@ public class PlayerPoints : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (!isLocalPlayer)
-        //{
-        //    return;
-        //}
         _displayPoints.text = _gameManager.UserID + ":" + Points;
     }
 }
