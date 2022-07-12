@@ -9,11 +9,12 @@ using UnityEngine.Networking;
 public class GameManager : MonoBehaviour
 {
     private string _hostaddress;
+    [SerializeField]
     private string _UserID;
     private string _status;
     private NetworkManager _networkManager;
 
-    public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
+    public static GameManager instance;
     public string UserID
     {
         get
@@ -39,7 +40,7 @@ public class GameManager : MonoBehaviour
     /// Makes GameManager Omnipresent
     /// </summary>
     void Awake()
-    {
+    { 
         //Check if instance already exists
         if (instance == null)
             //if not, set instance to this
@@ -64,7 +65,6 @@ public class GameManager : MonoBehaviour
         UserID = _userID;
         Status = "Hosting";
         _networkManager.StartHost();
-        Debug.Log("Hosting Game");
     }
     public void JoinGame(string _userID)
     {
@@ -73,7 +73,6 @@ public class GameManager : MonoBehaviour
         if (_hostaddress != null)
         {
             _networkManager.networkAddress = _hostaddress;
-            Debug.Log("Joining Game at address: " + _hostaddress);
         }
         _networkManager.StartClient();
         

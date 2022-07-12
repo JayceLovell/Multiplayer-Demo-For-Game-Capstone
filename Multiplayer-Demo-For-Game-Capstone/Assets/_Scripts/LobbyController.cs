@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class LobbyController : MonoBehaviour
 {
     //This can be changed to take user ID from database when ported into app
-
+    [SerializeField]
     private string _userID;
     private string _hostAddress;
     private bool isHosting;
