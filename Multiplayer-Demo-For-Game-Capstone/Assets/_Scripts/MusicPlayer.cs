@@ -43,5 +43,13 @@ public class MusicPlayer : MonoBehaviour
 
         _musicPlayer.clip = Music[index];
         _musicPlayer.Play();
+        _musicPlayer.loop = true;
+    }
+    /// <summary>
+    /// Stops playing music
+    /// </summary>
+    public void Stop()
+    {
+        _musicPlayer.Stop();
     }
 }
