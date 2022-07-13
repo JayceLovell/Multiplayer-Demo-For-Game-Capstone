@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class MusicPlayer : MonoBehaviour
+public class AccuracyBattleMusicPlayer : MonoBehaviour
 {
     private AudioSource _musicPlayer;
     [SerializeField]
