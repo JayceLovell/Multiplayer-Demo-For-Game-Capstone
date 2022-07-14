@@ -40,6 +40,13 @@ public class LobbyController : MonoBehaviour
             _gameManager.IsHosting();
         }
     }
+    public bool RankMode
+    {
+        get { return _gameManager.IsRankMode; }
+        set { 
+            _gameManager.IsRankMode = value;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

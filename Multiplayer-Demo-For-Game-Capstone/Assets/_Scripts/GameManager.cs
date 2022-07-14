@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private string _UserID;
     private string _status;
     private NetworkManager _networkManager;
+    private bool isRankMode;
 
     public static GameManager instance;
     public string UserID
@@ -33,6 +34,11 @@ public class GameManager : MonoBehaviour
     {
         get { return _status; }
         set { _status = value; }
+    }
+    public bool IsRankMode
+    {
+        get { return isRankMode; }
+        set { isRankMode = value; }
     }
 
     /// <summary>
