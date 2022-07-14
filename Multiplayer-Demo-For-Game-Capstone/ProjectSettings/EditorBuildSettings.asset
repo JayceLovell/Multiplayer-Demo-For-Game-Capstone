@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/NewLobby.unity
     guid: 4c938a4c613c57b4d8d6b334f59e2b7d
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Game.unity
     guid: 9f228ccbcb9dfbe45b7436505ce84572
   m_configObjects: {}
