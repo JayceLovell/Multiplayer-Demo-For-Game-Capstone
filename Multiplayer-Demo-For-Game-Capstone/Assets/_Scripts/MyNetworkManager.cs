@@ -24,14 +24,21 @@ public class MyNetworkManager :NetworkManager
     
     public override void OnClientConnect(NetworkConnection conn)
     {
-        Debug.Log("Connected User: " + gameManager.UserID);
-        GameObject UserConnectID = Instantiate(UserIdPrefab);
-        UserConnectID.transform.SetParent(GameObject.Find("Points Leader board").transform);
-        UserConnectID.transform.localScale = new Vector3(1, 1, 1);
-        UserConnectID.transform.name = gameManager.UserID;
-        
-        //Refresh leader board with new players
-        GameObject.Find("Points Leader board").GetComponent<PointLeaderboardManager>().RefreshBoard();
+        if (gameManager.IsRankMode)
+        {
+
+        }
+        else
+        {
+            Debug.Log("Connected User: " + gameManager.UserID);
+            GameObject UserConnectID = Instantiate(UserIdPrefab);
+            UserConnectID.transform.SetParent(GameObject.Find("Points Leader board").transform);
+            UserConnectID.transform.localScale = new Vector3(1, 1, 1);
+            UserConnectID.transform.name = gameManager.UserID;
+
+            //Refresh leader board with new players
+            GameObject.Find("Points Leader board").GetComponent<PointLeaderboardManager>().RefreshBoard();
+        }
     }
     public override void OnStopHost()
     {

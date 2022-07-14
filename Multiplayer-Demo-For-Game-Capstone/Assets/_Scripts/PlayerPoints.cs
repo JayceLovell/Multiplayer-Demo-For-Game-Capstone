@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,7 @@ public class PlayerPoints : MonoBehaviour
     /// text box to display username and points
     /// </summary>
     [SerializeField]
-    private Text _displayPoints;
+    private TextMeshProUGUI _displayPoints;
 
     private GameManager _gameManager;
 
@@ -25,7 +26,7 @@ public class PlayerPoints : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _displayPoints = GetComponent<Text>();
+        _displayPoints = GetComponent<TextMeshProUGUI>();
         _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         Points = 0;
     }

@@ -10,6 +10,17 @@ public class AccuracyBattleManager : MonoBehaviour
     [SerializeField]
     private string hostAddress;
 
+    /// <summary>
+    /// Board for 1v1
+    /// </summary>
+    public GameObject RankedLayout;
+    /// <summary>
+    /// Board for 5 player mode
+    /// </summary>
+    public GameObject FivePlayerLayout;
+
+    public GameObject Board;
+
     public int Score
     {
         get { return _score; }
@@ -40,6 +51,16 @@ public class AccuracyBattleManager : MonoBehaviour
         GameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         hostAddress = GameManager.HostAddress;
         PlayerPoints = GameObject.Find(GameManager.UserID);
+        if (GameManager.IsRankMode)
+        {
+            Board=Instantiate(RankedLayout, GameObject.Find("Canvas").transform);
+            Board.transform.SetAsFirstSibling();
+        }
+        else
+        {
+            Board=Instantiate(FivePlayerLayout, GameObject.Find("Canvas").transform);
+            Board.transform.SetAsFirstSibling();
+        }
     }
 
     // Update is called once per frame
