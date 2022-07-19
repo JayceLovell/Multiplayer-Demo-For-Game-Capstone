@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
     {
         _networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         GetIpAddress();
+        IsRankMode = false;
     }
     public void HostGame(string _userID)
     {

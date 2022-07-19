@@ -21458,7 +21458,7 @@ GameObject:
   - component: {fileID: 262132697536740486}
   - component: {fileID: 515574257826049337}
   m_Layer: 5
-  m_Name: ReadyButton
+  m_Name: BtnReady
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

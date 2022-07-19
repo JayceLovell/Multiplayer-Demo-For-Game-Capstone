@@ -32,7 +32,7 @@ public class UiManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject.Find("BtnReady").GetComponent<Button>().onClick.AddListener(Ready);
     }
     public void Ready()
     {
