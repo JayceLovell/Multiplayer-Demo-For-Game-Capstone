@@ -67,12 +67,24 @@ public class GameManager : MonoBehaviour
         GetIpAddress();
         IsRankMode = false;
     }
+    /// <summary>
+    /// Hosting game 
+    /// this is lan for now 
+    /// to be remove for firebase connection
+    /// </summary>
+    /// <param name="_userID">Users name</param>
     public void HostGame(string _userID)
     {
         UserID = _userID;
         Status = "Hosting";
         _networkManager.StartHost();
     }
+    /// <summary>
+    /// Joining game
+    /// this is lan only 
+    /// to be remove for firebase connection
+    /// </summary>
+    /// <param name="_userID">Users name</param>
     public void JoinGame(string _userID)
     {
         UserID = _userID;

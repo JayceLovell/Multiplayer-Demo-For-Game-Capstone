@@ -61,6 +61,7 @@ public class AccuracyBattleManager : MonoBehaviour
             Board=Instantiate(FivePlayerLayout, GameObject.Find("Canvas").transform);
             Board.transform.SetAsFirstSibling();
         }
+        GameObject.Find("BtnReady").GetComponent<Button>().onClick.AddListener(GameObject.Find("UI Manager").GetComponent<UiManager>().Ready);
     }
 
     // Update is called once per frame

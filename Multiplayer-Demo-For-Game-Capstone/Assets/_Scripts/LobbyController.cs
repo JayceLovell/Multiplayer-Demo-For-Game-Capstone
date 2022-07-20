@@ -8,10 +8,24 @@ public class LobbyController : MonoBehaviour
     //This can be changed to take user ID from database when ported into app
     [SerializeField]
     private string _userID;
-    private string _hostAddress;
-    private bool isHosting;
     private GameManager _gameManager;
     public bool IsActiveMenu;
+
+    //Testing variables
+    public bool isTestMode;
+    /// <summary>
+    /// Information to join Host
+    /// This is for LAN only!!!
+    /// </summary>
+    [Tooltip("Enter address of person connecting to.")]
+    public string HostAddress;
+    /// <summary>
+    /// If user hosting game or not
+    /// This is for LAN only!!!
+    /// </summary>
+    [Tooltip("Look at networkManager for your ipaddress to share")]
+    public bool IsHosting;
+    //end of testing variables
 
     /// <summary>
     /// Will contain information for display user information
@@ -22,26 +36,9 @@ public class LobbyController : MonoBehaviour
         set { _userID = value; }
     }
     /// <summary>
-    /// Information to join Host
+    /// If change game manager value of rank or not
     /// </summary>
-    public string HostAddress
-    {
-        get { return _hostAddress; }
-        set { _hostAddress = value; }
-    }
-    /// <summary>
-    /// If user hosting game or not
-    /// This is for LAN only!!!
-    /// </summary>
-    public bool Hosting
-    {
-        get { return isHosting; }
-        set { 
-            isHosting = value;
-            _gameManager.IsHosting();
-        }
-    }
-    public bool RankMode
+    public bool IsRankMode
     {
         get { return _gameManager.IsRankMode; }
         set { 
@@ -55,18 +52,32 @@ public class LobbyController : MonoBehaviour
         _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         GameObject.Find("txtVersion").GetComponent<Text>().text = "Version: " + Application.version;
     }
-    public void Connect()
+    void Update()
     {
-        if(isHosting)
-        {          
-            Debug.Log("Hosting Game Selected");
-            _gameManager.HostGame(UserID);
+        if (isTestMode)
+        {
+            if (IsHosting && (_gameManager.HostAddress == null))
+            {
+                _gameManager.IsHosting();
+            }
         }
-        else
-        { 
-            Debug.Log("Joining Game Selected");
-            _gameManager.HostAddress = HostAddress;
-            _gameManager.JoinGame(UserID);
+    }
+    /// <summary>
+    /// based on bool value
+    /// </summary>
+    /// <param name="isRanked">Playing ranked or regular mode</param>
+    public void FindGame(bool isRanked)
+    {
+        _gameManager.IsRankMode = isRanked;
+        if (isTestMode)
+        {
+            if (IsHosting)
+            {
+                _gameManager.HostAddress = HostAddress;
+                _gameManager.HostGame(UserID);
+            }
+            else
+                _gameManager.JoinGame(UserID);
         }
     }
     public void DROP_DOWN_CLICK(Animator anim)
