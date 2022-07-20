@@ -4075,18 +4075,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 5
---- !u!114 &6753404724247744089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6753404724247744091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e08d4c8f342f4974cbce988569e0130e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &6753404724247744090
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4117,7 +4105,6 @@ GameObject:
   - component: {fileID: 6753404724247744090}
   - component: {fileID: 6753404724247744095}
   - component: {fileID: 6753404724247744088}
-  - component: {fileID: 6753404724247744089}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged

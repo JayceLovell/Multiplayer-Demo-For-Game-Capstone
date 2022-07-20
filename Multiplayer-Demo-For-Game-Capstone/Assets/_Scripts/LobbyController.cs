@@ -11,6 +11,7 @@ public class LobbyController : MonoBehaviour
     private string _hostAddress;
     private bool isHosting;
     private GameManager _gameManager;
+    public bool IsActiveMenu;
 
     /// <summary>
     /// Will contain information for display user information
@@ -68,4 +69,14 @@ public class LobbyController : MonoBehaviour
             _gameManager.JoinGame(UserID);
         }
     }
+    public void DROP_DOWN_CLICK(Animator anim)
+    {
+        IsActiveMenu = !IsActiveMenu;
+        ANIMATION_STATE(anim, "IsActive", IsActiveMenu);
+    }
+    public static void ANIMATION_STATE(Animator anim, string parameterName, bool state)
+    {
+        anim.SetBool(parameterName, state);
+    }
 }
+
