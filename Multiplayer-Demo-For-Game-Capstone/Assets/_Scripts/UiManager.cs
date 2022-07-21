@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -17,8 +16,34 @@ public class UiManager : MonoBehaviour
     private AccuracyBattleMusicPlayer _musicPlayer;
     private GameManager _gameManager;
     private NetworkManager networkmanager;
+    private bool isSongPlaying;
 
     public GameObject DisplaySong;
+    public GameObject Reference;
+    public GameObject MySong;
+    public GameObject Clock;
+
+    public bool IsSongPlaying
+    {
+        get { return isSongPlaying; }
+        set { 
+            isSongPlaying = value;
+            if (isSongPlaying)
+            {
+                Reference.SetActive(true);
+                DisplaySong.GetComponent<Text>().text = _musicPlayer.SongName;
+                DisplaySong.GetComponent<Text>().alignment = TextAnchor.LowerLeft;
+                Clock.GetComponent<Clock>().AmoutOfTime = 30;
+            }
+            else
+            {
+                Reference.SetActive(false);
+                MySong.SetActive(true);
+                DisplaySong.GetComponent<Text>().text = _musicPlayer.SongName;
+                DisplaySong.GetComponent<Text>().alignment = TextAnchor.LowerLeft;
+            }
+        }
+    }
     /// <summary>
     /// is Called before Start
     /// </summary>
@@ -36,11 +61,10 @@ public class UiManager : MonoBehaviour
     public void Ready()
     {
         _accuacyBattleManager.GameStart();
-        DisplaySong.GetComponent<TextMeshProUGUI>().text = _musicPlayer.SongName;
     }
     /// <summary>
     /// TODO
-    /// Change this to work with firebase and go back to gameScene
+    /// Change this to work with firebase and go back to gameScene Or Menu
     /// </summary>
     public void Exit()
     {

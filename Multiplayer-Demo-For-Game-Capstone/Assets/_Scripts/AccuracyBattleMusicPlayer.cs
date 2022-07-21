@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class AccuracyMusicPlayer : MonoBehaviour
+public class AccuracyBattleMusicPlayer : MonoBehaviour
 {
     private AudioSource _musicPlayer;
     [SerializeField]
     private string _songName;
+    private UiManager _uiManager;
 
 
     public List<AudioClip> Music= new List<AudioClip>();
@@ -18,8 +19,9 @@ public class AccuracyMusicPlayer : MonoBehaviour
    
     // Start is called before the first frame update
     void Start()
-    {
+    { 
         _musicPlayer = GetComponent<AudioSource>();
+        _uiManager = GameObject.Find("UI Manager").GetComponent<UiManager>();
         
         string[] assetNames = AssetDatabase.FindAssets("full", new[] { "Assets/Music" });
         Music.Clear();
@@ -44,6 +46,9 @@ public class AccuracyMusicPlayer : MonoBehaviour
         _musicPlayer.clip = Music[index];
         _musicPlayer.Play();
         _musicPlayer.loop = true;
+
+        _uiManager.IsSongPlaying = true;
+        StartCoroutine(PlayForSeconds(30));
     }
     /// <summary>
     /// Stops playing music
@@ -51,5 +56,16 @@ public class AccuracyMusicPlayer : MonoBehaviour
     public void Stop()
     {
         _musicPlayer.Stop();
+        _uiManager.IsSongPlaying = false;
+    }
+    /// <summary>
+    /// stops music after playing for amount of time in seconds
+    /// </summary>
+    /// <param name="Seconds">time in seconds</param>
+    /// <returns></returns>
+    private IEnumerator PlayForSeconds(float Seconds)
+    {
+        yield return new WaitForSeconds(Seconds);
+        Stop();
     }
 }

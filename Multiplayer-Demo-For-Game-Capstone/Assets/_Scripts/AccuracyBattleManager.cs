@@ -77,7 +77,7 @@ public class AccuracyBattleManager : MonoBehaviour
         PlaySound();
     }
     private void PlaySound()
-    {
+    { 
         MusicPlayer.GetComponent<AccuracyBattleMusicPlayer>().Play();
     }
 }
