@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5176471}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -707,7 +707,7 @@ GameObject:
   - component: {fileID: 818720227}
   - component: {fileID: 818720226}
   m_Layer: 0
-  m_Name: AccuracyBattleManager
+  m_Name: MemoryFeudManager
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -903,7 +903,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: -0.002059227, y: 0.003897367}
   m_AnchorMax: {x: 1.002059, y: 0.9961026}
-  m_AnchoredPosition: {x: 0.00024414062, y: -0.34741974}
+  m_AnchoredPosition: {x: 0.00024414062, y: -0.3474121}
   m_SizeDelta: {x: -1712.7329, y: 0.33909607}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1821151162

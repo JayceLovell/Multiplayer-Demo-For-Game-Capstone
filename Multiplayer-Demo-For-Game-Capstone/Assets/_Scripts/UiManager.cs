@@ -12,8 +12,8 @@ public class UiManager : MonoBehaviour
 {
     public bool IsActiveMenu;
 
-    private AccuracyBattleManager _accuacyBattleManager;
-    private AccuracyBattleMusicPlayer _musicPlayer;
+    private MemoryFeudManager _accuacyBattleManager;
+    private MusicPlayer _musicPlayer;
     private GameManager _gameManager;
     private NetworkManager networkmanager;
     private bool isSongPlaying;
@@ -49,8 +49,8 @@ public class UiManager : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        _accuacyBattleManager = GameObject.Find("AccuracyBattleManager").GetComponent<AccuracyBattleManager>();
-        _musicPlayer = GameObject.Find("Music Player").GetComponent<AccuracyBattleMusicPlayer>();
+        _accuacyBattleManager = GameObject.Find("MemoryFeudManager").GetComponent<MemoryFeudManager>();
+        _musicPlayer = GameObject.Find("Music Player").GetComponent<MusicPlayer>();
         networkmanager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
@@ -61,6 +61,7 @@ public class UiManager : MonoBehaviour
     public void Ready()
     {
         _accuacyBattleManager.GameStart();
+        GameObject.Find("BtnReady").GetComponent<Button>().interactable = false;
     }
     /// <summary>
     /// TODO
