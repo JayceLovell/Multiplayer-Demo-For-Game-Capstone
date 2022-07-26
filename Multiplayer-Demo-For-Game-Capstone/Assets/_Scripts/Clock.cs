@@ -24,6 +24,11 @@ public class Clock : MonoBehaviour
             }
         }   
     }
+    /// <summary>
+    /// If counter is finished or not
+    /// false meaning not counting or timer finish
+    /// true meaning its counting down
+    /// </summary>
     public bool StartTimer
     {
         get { return _startTimer; }

@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class MemoryFeudManager : MonoBehaviour
 {
     private int _score;
+    private bool _roundStart;
+    private int _rounds;
+
     [SerializeField]
     private string hostAddress;
     public int Score
@@ -21,6 +24,18 @@ public class MemoryFeudManager : MonoBehaviour
             PlayerPoints.GetComponent<PlayerPoints>().Points = value;
         }
     }
+    public bool RoundStart
+    {
+        get { return _roundStart; }
+        set { 
+            _roundStart = value;
+            if (_roundStart)
+            {
+                _rounds++;
+                UiManager.GetComponent<UiManager>().Clock.GetComponent<Clock>().AmoutOfTime = 60f;
+            }
+        }
+    }
     /// <summary>
     /// Board for 1v1
     /// </summary>
@@ -34,19 +49,14 @@ public class MemoryFeudManager : MonoBehaviour
     [Header("Game Objects")]
     public GameObject PlayerPoints;
     public GameObject MusicPlayer;
-
-    [Header("Game Parameters")]                                             // Number of channel strips to spawn
-    protected const int NumberOfRounds = 3;                                               // Number of rounds they play
-    protected int currentRound;
-    protected float roundBeingPlayed;
-    protected float roundAccuracy;                                                        // Accuracy for current round
-    protected List<float> userAccuracies;                                                 // List of user accuracies
+    public GameObject UiManager;
 
     //Start is called before the first frame update
     void Start()
     {
         GameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         hostAddress = GameManager.HostAddress;
+        UiManager = GameObject.Find("UI Manager");
         PlayerPoints = GameObject.Find(GameManager.UserID);
         if (GameManager.IsRankMode)
         {
@@ -59,12 +69,23 @@ public class MemoryFeudManager : MonoBehaviour
             Board.transform.SetAsFirstSibling();
         }
         GameObject.Find("BtnReady").GetComponent<Button>().onClick.AddListener(GameObject.Find("UI Manager").GetComponent<UiManager>().Ready);
+        RoundStart = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (RoundStart)
+        {
+            if (UiManager.GetComponent<UiManager>().Clock.GetComponent<Clock>().StartTimer)
+            {
+                // player does their mixes
+            }
+            else
+            {
+              // round finish do accuracy calculations and points then reset the game for next round
+            }
+        }
     }
     /// <summary>
     /// Starts game

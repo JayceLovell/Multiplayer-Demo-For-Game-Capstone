@@ -9,6 +9,7 @@ public class MusicPlayer : MonoBehaviour
     [SerializeField]
     private string _songName;
     private UiManager _uiManager;
+    private MemoryFeudManager _memoryFeudManager;
 
 
     public List<AudioClip> Music= new List<AudioClip>();
@@ -22,6 +23,7 @@ public class MusicPlayer : MonoBehaviour
     { 
         _musicPlayer = GetComponent<AudioSource>();
         _uiManager = GameObject.Find("UI Manager").GetComponent<UiManager>();
+        _memoryFeudManager = GameObject.Find("MemoryFeudManager").GetComponent<MemoryFeudManager>();
         
         string[] assetNames = AssetDatabase.FindAssets("full", new[] { "Assets/Music" });
         Music.Clear();
@@ -57,6 +59,7 @@ public class MusicPlayer : MonoBehaviour
     {
         _musicPlayer.Stop();
         _uiManager.IsSongPlaying = false;
+        _memoryFeudManager.RoundStart = true;
     }
     /// <summary>
     /// stops music after playing for amount of time in seconds
