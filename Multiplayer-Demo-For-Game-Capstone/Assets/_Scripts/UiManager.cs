@@ -18,13 +18,13 @@ public class UiManager : MonoBehaviour
     private GameManager _gameManager;
     private NetworkManager networkmanager;
     private bool isSongPlaying;
-    public Animator animator;
+    public Animator PopUpMessageBoard;
+    public Animator SubmitMessage;
     public GameObject DisplaySong;
     public GameObject Reference;
     public GameObject MySong;
     public GameObject Clock;
     public GameObject SubmitButton;
-    public GameObject PopUpMessageBoard;
     public Text PopUpMessageBoardText;
     
     public bool IsSongPlaying
@@ -80,6 +80,7 @@ public class UiManager : MonoBehaviour
         SubmitButton = GameObject.Find("BtnSubmit");
         SubmitButton.GetComponent<Button>().interactable = false;
         SubmitButton.GetComponent<Button>().onClick.AddListener(_accuacyBattleManager.FinishMix);
+        SubmitMessage=SubmitButton.transform.GetChild(0).gameObject.GetComponent<Animator>();
     }
     /// <summary>
     /// Bring up popups to tell player
@@ -90,8 +91,8 @@ public class UiManager : MonoBehaviour
         SubmitButton.GetComponent<Button>().interactable = true;
         MessageBoardText("Now Mix");
         //Using set active until animation is implementated
-        SubmitButton.transform.GetChild(0).gameObject.SetActive(true);
-        animator.SetBool("Visible", true);
+        //SubmitButton.transform.GetChild(0).gameObject.SetActive(true);
+        PopUpMessageBoard.SetBool("visible", true);
         StartCoroutine(WaitForSeconds(10, BringDownPopUps));
     }
     /// <summary>
@@ -100,10 +101,9 @@ public class UiManager : MonoBehaviour
     /// </summary>
     public void BringDownPopUps()
     {
-        animator.SetBool("Visible", false);
+        PopUpMessageBoard.SetBool("visible", false);
         //Using set active until animation is implementated
-        SubmitButton.transform.GetChild(0).gameObject.SetActive(false);
-        PopUpMessageBoard.SetActive(false);
+        //SubmitButton.transform.GetChild(0).gameObject.SetActive(false);
     }
     /// <summary>
     /// Message to Display to user
@@ -111,7 +111,7 @@ public class UiManager : MonoBehaviour
     /// <param Message to Display="Message"></param>
     public void MessageBoardText(string Message)
     {
-        PopUpMessageBoard.SetActive(true);
+        PopUpMessageBoard.SetBool("visible", true);
         PopUpMessageBoardText.text = Message;
         StartCoroutine(WaitForSeconds(5, BringDownPopUps));
     }

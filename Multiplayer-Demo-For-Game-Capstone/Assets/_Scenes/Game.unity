@@ -300,8 +300,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 250}
+  m_AnchoredPosition: {x: -6, y: 26.8}
+  m_SizeDelta: {x: 381.50598, y: 348.8297}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &247777371
 MonoBehaviour:
@@ -375,14 +375,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsActiveMenu: 0
-  animator: {fileID: 0}
-  DisplaySong: {fileID: 0}
-  Reference: {fileID: 0}
-  MySong: {fileID: 0}
-  Clock: {fileID: 0}
+  PopUpMessageBoard: {fileID: 1525123718}
+  DisplaySong: {fileID: 2129062453}
+  Reference: {fileID: 1931888550}
+  MySong: {fileID: 2141110482}
+  Clock: {fileID: 1821151160}
   SubmitButton: {fileID: 0}
-  PopUpMessageBoard: {fileID: 0}
-  PopUpMessageBoardText: {fileID: 0}
+  PopUpMessageBoardText: {fileID: 247777371}
 --- !u!4 &339279583
 Transform:
   m_ObjectHideFlags: 0
@@ -971,7 +970,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1525123715
 RectTransform:
   m_ObjectHideFlags: 0
@@ -990,7 +989,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 400}
+  m_SizeDelta: {x: 600, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1525123716
 MonoBehaviour:
