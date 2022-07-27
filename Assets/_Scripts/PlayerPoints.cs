@@ -14,12 +14,15 @@ public class PlayerPoints : MonoBehaviour
 
     private GameManager _gameManager;
 
-    public int _points;
+    public float _points;
 
-    public int Points
+    public float Points
     {
         get { return _points; }
-        set { _points = value; }
+        set { 
+            _points = value;
+            _displayPoints.text = _gameManager.UserID + ":" + Points;
+        }
     }
 
 
@@ -33,7 +36,6 @@ public class PlayerPoints : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        _displayPoints.text = _gameManager.UserID + ":" + Points;
+    {        
     }
 }

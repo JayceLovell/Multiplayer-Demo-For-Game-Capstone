@@ -5,9 +5,12 @@ using UnityEngine.UI;
 
 public class LobbyController : MonoBehaviour
 {
-    //This can be changed to take user ID from database when ported into app
-    [SerializeField]
-    private string _userID;
+    /// <summary>
+    /// Will contain information for display user information
+    /// This can be changed to take user ID from database when ported into app
+    /// </summary>
+    public string UserID;
+
     private GameManager _gameManager;
     public bool IsActiveMenu;
 
@@ -27,14 +30,6 @@ public class LobbyController : MonoBehaviour
     public bool IsHosting;
     //end of testing variables
 
-    /// <summary>
-    /// Will contain information for display user information
-    /// </summary>
-    public string UserID
-    {
-        get { return _userID; }
-        set { _userID = value; }
-    }
     /// <summary>
     /// If change game manager value of rank or not
     /// </summary>

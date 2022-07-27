@@ -88,7 +88,7 @@ public class UiManager : MonoBehaviour
     /// </summary>
     public void BringUpPopUps()
     {
-        SubmitButton.GetComponent<Button>().interactable = true;
+        RoundStart();
         MessageBoardText("Now Mix");
         //Using set active until animation is implementated
         //SubmitButton.transform.GetChild(0).gameObject.SetActive(true);
@@ -116,6 +116,21 @@ public class UiManager : MonoBehaviour
         PopUpMessageBoard.SetBool("visible", true);
         PopUpMessageBoardText.text = Message;
         StartCoroutine(WaitForSeconds(5, BringDownPopUps));
+    }
+    /// <summary>
+    /// Do round start Ui stuff
+    /// </summary>
+    public void RoundStart()
+    {
+        SubmitButton.GetComponent<Button>().interactable = true;
+    }
+    /// <summary>
+    /// DO round end UI stuff
+    /// </summary>
+    public void RoundEnd()
+    {
+        SubmitButton.GetComponent<Button>().interactable = false;
+        GameObject.Find("BtnReady").GetComponent<Button>().interactable = true;
     }
     /// <summary>
     /// TODO

@@ -31,7 +31,7 @@ public class PointLeaderboardManager : MonoBehaviour
     /// TODO #2925127468
     /// rearrange the boarderboard based on the player points
     /// </summary>
-    private void LeaderBoardCheck()
+    public void LeaderBoardCheck()
     {
         //to get what points the player have
         //Children[0].GetComponent<PlayerPoints>().Points;

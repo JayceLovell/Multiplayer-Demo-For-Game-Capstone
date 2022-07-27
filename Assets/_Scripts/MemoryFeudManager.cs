@@ -5,18 +5,19 @@ using UnityEngine.UI;
 
 public class MemoryFeudManager : MonoBehaviour
 {
-    private int _score;
+    private float _score;
     private bool _roundStart;
     private int _rounds;
 
     [SerializeField]
     private string hostAddress;
-    public int Score
+    public float Score
     {
         get { return _score; }
         set
         {
             _score = value;
+            Debug.Log("Player Points = "+ _score);
             if (PlayerPoints == null)
             {
                 PlayerPoints = GameObject.Find(GameManager.UserID);
@@ -52,6 +53,8 @@ public class MemoryFeudManager : MonoBehaviour
     public GameObject MusicPlayer;
     public UiManager _uiManager;
 
+    public List<StripValues> Strips=new List<StripValues>();
+
     //Start is called before the first frame update
     void Start()
     {
@@ -69,6 +72,14 @@ public class MemoryFeudManager : MonoBehaviour
             Board=Instantiate(FivePlayerLayout, GameObject.Find("Canvas").transform);
             Board.transform.SetAsFirstSibling();
         }
+
+        //Get the mixing board strips
+        GameObject[] Stripboards = GameObject.FindGameObjectsWithTag("Strip");
+        foreach(GameObject board in Stripboards)
+        {
+            Strips.Add(board.GetComponent<StripValues>());
+        }
+
         _uiManager.GetComponent<UiManager>().GetSpawnedUI();
         RoundStart = false;
     }
@@ -84,6 +95,7 @@ public class MemoryFeudManager : MonoBehaviour
             }
             else
             {
+                //Gets called if player ran out of time and didn't hit submit
                 FinishMix();
             }
         }
@@ -97,6 +109,20 @@ public class MemoryFeudManager : MonoBehaviour
     public void FinishMix()
     {
         RoundStart = false;
+        float tempScore = 0;
+        foreach(StripValues strip in Strips)
+        {
+            tempScore += strip.Pan;
+            tempScore += strip.Delay;
+            tempScore += strip.Reverb;
+            tempScore += strip.EQ;
+            tempScore += strip.Volume;
+        }
+
+        Score += (int)(tempScore*1000);
+        RoundStart = false;
+        _uiManager.MessageBoardText("Your scored: " + Score);
+        _uiManager.RoundEnd();
     }
     /// <summary>
     /// Starts game
