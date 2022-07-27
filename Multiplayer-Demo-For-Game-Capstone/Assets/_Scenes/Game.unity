@@ -376,6 +376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActiveMenu: 0
   PopUpMessageBoard: {fileID: 1525123718}
+  SubmitAnimator: {fileID: 0}
   DisplaySong: {fileID: 2129062453}
   Reference: {fileID: 1931888550}
   MySong: {fileID: 2141110482}

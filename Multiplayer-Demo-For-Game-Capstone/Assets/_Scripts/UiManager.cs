@@ -19,7 +19,7 @@ public class UiManager : MonoBehaviour
     private NetworkManager networkmanager;
     private bool isSongPlaying;
     public Animator PopUpMessageBoard;
-    public Animator SubmitMessage;
+    public Animator SubmitAnimator;
     public GameObject DisplaySong;
     public GameObject Reference;
     public GameObject MySong;
@@ -80,7 +80,7 @@ public class UiManager : MonoBehaviour
         SubmitButton = GameObject.Find("BtnSubmit");
         SubmitButton.GetComponent<Button>().interactable = false;
         SubmitButton.GetComponent<Button>().onClick.AddListener(_accuacyBattleManager.FinishMix);
-        SubmitMessage=SubmitButton.transform.GetChild(0).gameObject.GetComponent<Animator>();
+        SubmitAnimator=SubmitButton.transform.GetChild(0).gameObject.GetComponent<Animator>();
     }
     /// <summary>
     /// Bring up popups to tell player
@@ -92,6 +92,7 @@ public class UiManager : MonoBehaviour
         MessageBoardText("Now Mix");
         //Using set active until animation is implementated
         //SubmitButton.transform.GetChild(0).gameObject.SetActive(true);
+        SubmitAnimator.SetBool("visible", true);
         PopUpMessageBoard.SetBool("visible", true);
         StartCoroutine(WaitForSeconds(10, BringDownPopUps));
     }
@@ -104,6 +105,7 @@ public class UiManager : MonoBehaviour
         PopUpMessageBoard.SetBool("visible", false);
         //Using set active until animation is implementated
         //SubmitButton.transform.GetChild(0).gameObject.SetActive(false);
+        SubmitAnimator.SetBool("visible", false);
     }
     /// <summary>
     /// Message to Display to user
