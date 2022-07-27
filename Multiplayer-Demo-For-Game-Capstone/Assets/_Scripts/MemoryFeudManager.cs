@@ -32,7 +32,8 @@ public class MemoryFeudManager : MonoBehaviour
             if (_roundStart)
             {
                 _rounds++;
-                UiManager.GetComponent<UiManager>().Clock.GetComponent<Clock>().AmoutOfTime = 60f;
+                _uiManager.Clock.GetComponent<Clock>().AmoutOfTime = 60f;
+                _uiManager.BringUpPopUps();
             }
         }
     }
@@ -49,14 +50,14 @@ public class MemoryFeudManager : MonoBehaviour
     [Header("Game Objects")]
     public GameObject PlayerPoints;
     public GameObject MusicPlayer;
-    public GameObject UiManager;
+    public UiManager _uiManager;
 
     //Start is called before the first frame update
     void Start()
     {
         GameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         hostAddress = GameManager.HostAddress;
-        UiManager = GameObject.Find("UI Manager");
+        _uiManager = GameObject.Find("UI Manager").GetComponent<UiManager>();
         PlayerPoints = GameObject.Find(GameManager.UserID);
         if (GameManager.IsRankMode)
         {
@@ -68,7 +69,7 @@ public class MemoryFeudManager : MonoBehaviour
             Board=Instantiate(FivePlayerLayout, GameObject.Find("Canvas").transform);
             Board.transform.SetAsFirstSibling();
         }
-        GameObject.Find("BtnReady").GetComponent<Button>().onClick.AddListener(GameObject.Find("UI Manager").GetComponent<UiManager>().Ready);
+        _uiManager.GetComponent<UiManager>().GetSpawnedUI();
         RoundStart = false;
     }
 
@@ -77,15 +78,25 @@ public class MemoryFeudManager : MonoBehaviour
     {
         if (RoundStart)
         {
-            if (UiManager.GetComponent<UiManager>().Clock.GetComponent<Clock>().StartTimer)
+            if (_uiManager.GetComponent<UiManager>().Clock.GetComponent<Clock>().StartTimer)
             {
                 // player does their mixes
             }
             else
             {
-              // round finish do accuracy calculations and points then reset the game for next round
+                FinishMix();
             }
         }
+    }
+    /// <summary>
+    /// Player finishes early and submits their mix
+    /// or
+    /// time runs out
+    /// will do calculations of accuracy
+    /// </summary>
+    public void FinishMix()
+    {
+        RoundStart = false;
     }
     /// <summary>
     /// Starts game

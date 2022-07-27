@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -22,6 +23,9 @@ public class UiManager : MonoBehaviour
     public GameObject Reference;
     public GameObject MySong;
     public GameObject Clock;
+    public GameObject SubmitButton;
+    public GameObject PopUpMessageBoard;
+    public Text PopUpMessageBoardText;
 
     public bool IsSongPlaying
     {
@@ -58,10 +62,44 @@ public class UiManager : MonoBehaviour
     void Start()
     {
     }
+    /// <summary>
+    /// Starts game
+    /// </summary>
     public void Ready()
     {
         _accuacyBattleManager.GameStart();
         GameObject.Find("BtnReady").GetComponent<Button>().interactable = false;
+    }
+    /// <summary>
+    /// Gathers UI that is instantiated with prefab of mixing board
+    /// </summary>
+    public void GetSpawnedUI()
+    {
+        GameObject.Find("BtnReady").GetComponent<Button>().onClick.AddListener(GameObject.Find("UI Manager").GetComponent<UiManager>().Ready);
+        SubmitButton = GameObject.Find("BtnSubmit");
+        SubmitButton.GetComponent<Button>().interactable = false;
+        SubmitButton.GetComponent<Button>().onClick.AddListener(_accuacyBattleManager.FinishMix);
+    }
+    /// <summary>
+    /// Bring up popups to tell player
+    /// TODO @Jelani Animation for smooth effect
+    /// </summary>
+    public void BringUpPopUps()
+    {
+        SubmitButton.GetComponent<Button>().interactable = true;
+        //Using set active until animation is implementated
+        SubmitButton.transform.GetChild(0).gameObject.SetActive(true);
+
+        StartCoroutine(WaitForSeconds(10, BringDownPopUps));
+    }
+    /// <summary>
+    /// Brings down Popups after 10 seconds
+    /// @TODO @Jelani u know what to do 
+    /// </summary>
+    public void BringDownPopUps()
+    {
+        //Using set active until animation is implementated
+        SubmitButton.transform.GetChild(0).gameObject.SetActive(false);
     }
     /// <summary>
     /// TODO
@@ -88,5 +126,11 @@ public class UiManager : MonoBehaviour
     public static void ANIMATION_STATE(Animator anim, string parameterName, bool state)
     {
         anim.SetBool(parameterName, state);
+    }
+
+    private IEnumerator WaitForSeconds(float Seconds,Action MethodName)
+    {
+        yield return new WaitForSeconds(Seconds);
+        MethodName();
     }
 }
