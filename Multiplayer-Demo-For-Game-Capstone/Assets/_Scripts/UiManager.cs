@@ -18,7 +18,7 @@ public class UiManager : MonoBehaviour
     private GameManager _gameManager;
     private NetworkManager networkmanager;
     private bool isSongPlaying;
-
+    public Animator animator;
     public GameObject DisplaySong;
     public GameObject Reference;
     public GameObject MySong;
@@ -89,7 +89,7 @@ public class UiManager : MonoBehaviour
         SubmitButton.GetComponent<Button>().interactable = true;
         //Using set active until animation is implementated
         SubmitButton.transform.GetChild(0).gameObject.SetActive(true);
-
+        animator.SetBool("Visible", true);
         StartCoroutine(WaitForSeconds(10, BringDownPopUps));
     }
     /// <summary>
@@ -98,6 +98,7 @@ public class UiManager : MonoBehaviour
     /// </summary>
     public void BringDownPopUps()
     {
+        animator.SetBool("Visible", false);
         //Using set active until animation is implementated
         SubmitButton.transform.GetChild(0).gameObject.SetActive(false);
     }

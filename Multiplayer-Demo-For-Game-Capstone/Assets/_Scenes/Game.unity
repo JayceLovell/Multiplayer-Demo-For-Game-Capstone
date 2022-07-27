@@ -374,6 +374,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1cbaef5eccc82142904e1a9537f5391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsActiveMenu: 0
+  animator: {fileID: 0}
+  DisplaySong: {fileID: 0}
+  Reference: {fileID: 0}
+  MySong: {fileID: 0}
+  Clock: {fileID: 0}
+  SubmitButton: {fileID: 0}
+  PopUpMessageBoard: {fileID: 0}
+  PopUpMessageBoardText: {fileID: 0}
 --- !u!4 &339279583
 Transform:
   m_ObjectHideFlags: 0
@@ -807,7 +816,7 @@ MonoBehaviour:
   GameManager: {fileID: 0}
   PlayerPoints: {fileID: 0}
   MusicPlayer: {fileID: 388055451}
-  _uiManager: {fileID: 0}
+  _uiManager: {fileID: 339279582}
 --- !u!4 &818720227
 Transform:
   m_ObjectHideFlags: 0
