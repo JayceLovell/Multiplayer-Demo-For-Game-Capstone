@@ -26,7 +26,7 @@ public class UiManager : MonoBehaviour
     public GameObject SubmitButton;
     public GameObject PopUpMessageBoard;
     public Text PopUpMessageBoardText;
-
+    
     public bool IsSongPlaying
     {
         get { return isSongPlaying; }
