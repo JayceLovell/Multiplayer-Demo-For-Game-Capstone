@@ -69,6 +69,7 @@ public class UiManager : MonoBehaviour
     {
         _accuacyBattleManager.GameStart();
         GameObject.Find("BtnReady").GetComponent<Button>().interactable = false;
+        MessageBoardText("listen to song carefully");
     }
     /// <summary>
     /// Gathers UI that is instantiated with prefab of mixing board
@@ -87,6 +88,7 @@ public class UiManager : MonoBehaviour
     public void BringUpPopUps()
     {
         SubmitButton.GetComponent<Button>().interactable = true;
+        MessageBoardText("Now Mix");
         //Using set active until animation is implementated
         SubmitButton.transform.GetChild(0).gameObject.SetActive(true);
 
@@ -100,6 +102,17 @@ public class UiManager : MonoBehaviour
     {
         //Using set active until animation is implementated
         SubmitButton.transform.GetChild(0).gameObject.SetActive(false);
+        PopUpMessageBoard.SetActive(false);
+    }
+    /// <summary>
+    /// Message to Display to user
+    /// </summary>
+    /// <param Message to Display="Message"></param>
+    public void MessageBoardText(string Message)
+    {
+        PopUpMessageBoard.SetActive(true);
+        PopUpMessageBoardText.text = Message;
+        StartCoroutine(WaitForSeconds(5, BringDownPopUps));
     }
     /// <summary>
     /// TODO
