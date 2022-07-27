@@ -18,7 +18,7 @@ public class UiManager : MonoBehaviour
     private GameManager _gameManager;
     private NetworkManager networkmanager;
     private bool isSongPlaying;
-
+    public Animator animator;
     public GameObject DisplaySong;
     public GameObject Reference;
     public GameObject MySong;
@@ -26,7 +26,7 @@ public class UiManager : MonoBehaviour
     public GameObject SubmitButton;
     public GameObject PopUpMessageBoard;
     public Text PopUpMessageBoardText;
-
+    
     public bool IsSongPlaying
     {
         get { return isSongPlaying; }
@@ -91,7 +91,7 @@ public class UiManager : MonoBehaviour
         MessageBoardText("Now Mix");
         //Using set active until animation is implementated
         SubmitButton.transform.GetChild(0).gameObject.SetActive(true);
-
+        animator.SetBool("Visible", true);
         StartCoroutine(WaitForSeconds(10, BringDownPopUps));
     }
     /// <summary>
@@ -100,6 +100,7 @@ public class UiManager : MonoBehaviour
     /// </summary>
     public void BringDownPopUps()
     {
+        animator.SetBool("Visible", false);
         //Using set active until animation is implementated
         SubmitButton.transform.GetChild(0).gameObject.SetActive(false);
         PopUpMessageBoard.SetActive(false);

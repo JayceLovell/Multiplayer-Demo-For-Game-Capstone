@@ -375,13 +375,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsActiveMenu: 0
-  DisplaySong: {fileID: 2129062453}
-  Reference: {fileID: 1931888550}
-  MySong: {fileID: 2141110482}
-  Clock: {fileID: 1821151160}
+  animator: {fileID: 0}
+  DisplaySong: {fileID: 0}
+  Reference: {fileID: 0}
+  MySong: {fileID: 0}
+  Clock: {fileID: 0}
   SubmitButton: {fileID: 0}
-  PopUpMessageBoard: {fileID: 1525123714}
-  PopUpMessageBoardText: {fileID: 247777371}
+  PopUpMessageBoard: {fileID: 0}
+  PopUpMessageBoardText: {fileID: 0}
 --- !u!4 &339279583
 Transform:
   m_ObjectHideFlags: 0
@@ -815,7 +816,7 @@ MonoBehaviour:
   GameManager: {fileID: 0}
   PlayerPoints: {fileID: 0}
   MusicPlayer: {fileID: 388055451}
-  _uiManager: {fileID: 0}
+  _uiManager: {fileID: 339279582}
 --- !u!4 &818720227
 Transform:
   m_ObjectHideFlags: 0
@@ -963,6 +964,7 @@ GameObject:
   - component: {fileID: 1525123715}
   - component: {fileID: 1525123717}
   - component: {fileID: 1525123716}
+  - component: {fileID: 1525123718}
   m_Layer: 5
   m_Name: PopUpMessage
   m_TagString: Untagged
@@ -1028,6 +1030,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525123714}
   m_CullTransparentMesh: 0
+--- !u!95 &1525123718
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525123714}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ac3a1b45f7bd94348aa104fa944477ff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1821151160
 GameObject:
   m_ObjectHideFlags: 0
