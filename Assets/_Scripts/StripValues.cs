@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class StripValues : MonoBehaviour
 {
-    public string StripName;
+    private string _stripName;
     private float _reverb;
     private float _delay;
     private float _pan;
@@ -13,6 +13,14 @@ public class StripValues : MonoBehaviour
     private float _volume;
 
     public GameObject TitleBox;
+    public string StripName
+    {
+        get { return _stripName; }
+        set { 
+            _stripName = value;
+            TitleBox.GetComponent<Text>().text = StripName;
+        }
+    }
     public float Reverb
     {
         get { return _reverb; }
@@ -37,18 +45,5 @@ public class StripValues : MonoBehaviour
     {
         get { return _volume; }
         set { _volume = value; }
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        TitleBox.GetComponent<Text>().text = StripName;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -11,18 +11,34 @@ public class MemoryFeudManager : MonoBehaviour
 
     [SerializeField]
     private string hostAddress;
+    /// <summary>
+    /// Saving correct values for now should be replaced with real accuracy from sonically
+    /// </summary>
+    public enum Correct
+    {
+        Pan = 50,
+        Delay = 50,
+        Reverb = 50,
+        EQ = 50,
+        Volume = 50
+    }
     public float Score
     {
         get { return _score; }
         set
         {
             _score = value;
-            Debug.Log("Player Points = "+ _score);
-            if (PlayerPoints == null)
+            if (GameManager.IsRankMode)
             {
-                PlayerPoints = GameObject.Find(GameManager.UserID);
+
             }
-            PlayerPoints.GetComponent<PlayerPoints>().Points = value;
+            {
+                if (PlayerPoints == null)
+                {
+                    PlayerPoints = GameObject.Find(GameManager.UserID);
+                }
+                PlayerPoints.GetComponent<PlayerPoints>().Points = value;
+            }
         }
     }
     public bool RoundStart
@@ -33,8 +49,6 @@ public class MemoryFeudManager : MonoBehaviour
             if (_roundStart)
             {
                 _rounds++;
-                _uiManager.Clock.GetComponent<Clock>().AmoutOfTime = 60f;
-                _uiManager.BringUpPopUps();
             }
         }
     }
@@ -73,13 +87,6 @@ public class MemoryFeudManager : MonoBehaviour
             Board.transform.SetAsFirstSibling();
         }
 
-        //Get the mixing board strips
-        GameObject[] Stripboards = GameObject.FindGameObjectsWithTag("Strip");
-        foreach(GameObject board in Stripboards)
-        {
-            Strips.Add(board.GetComponent<StripValues>());
-        }
-
         _uiManager.GetComponent<UiManager>().GetSpawnedUI();
         RoundStart = false;
     }
@@ -105,6 +112,7 @@ public class MemoryFeudManager : MonoBehaviour
     /// or
     /// time runs out
     /// will do calculations of accuracy
+    /// TODO Check my math @Jelani
     /// </summary>
     public void FinishMix()
     {
@@ -112,24 +120,40 @@ public class MemoryFeudManager : MonoBehaviour
         float tempScore = 0;
         foreach(StripValues strip in Strips)
         {
-            tempScore += strip.Pan;
-            tempScore += strip.Delay;
-            tempScore += strip.Reverb;
-            tempScore += strip.EQ;
-            tempScore += strip.Volume;
-        }
+            Debug.Log("Pan: "+strip.Pan);
+            Debug.Log("Delay: " + strip.Delay);
+            Debug.Log("Reverb: " + strip.Reverb);
+            Debug.Log("EQ: " + strip.EQ);
+            Debug.Log("Volume: " + strip.Volume);
 
-        Score += (int)(tempScore*1000);
-        RoundStart = false;
+            tempScore += (strip.Pan/(float)Correct.Pan)*100;
+            Debug.Log("Tempscore: " + tempScore);
+            tempScore += (strip.Delay / (float)Correct.Delay)*100;
+            Debug.Log("Tempscore: " + tempScore);
+            tempScore += (strip.Reverb / (float)Correct.Reverb)*100;
+            Debug.Log("Tempscore: " + tempScore);
+            tempScore += (strip.EQ / (float)Correct.EQ)*100;
+            Debug.Log("Tempscore: " + tempScore);
+            tempScore += ((strip.Volume*100) / (float)Correct.Volume)*100;
+            Debug.Log("Tempscore: " + tempScore);
+        }
+        Score += (int)tempScore;
         _uiManager.MessageBoardText("Your scored: " + Score);
         _uiManager.RoundEnd();
+        RoundStart = false;
     }
     /// <summary>
     /// Starts game
     /// </summary>
     public void GameStart()
     {
-            PlaySound();
+        //Get the mixing board strips
+        GameObject[] Stripboards = GameObject.FindGameObjectsWithTag("Strip");
+        foreach (GameObject board in Stripboards)
+        {
+            Strips.Add(board.GetComponent<StripValues>());
+        }
+        PlaySound();
     }
     private void PlaySound()
     { 
