@@ -1,0 +1,214 @@
+fileFormatVersion: 2
+guid: c65aa32f90962467080aa5cfd4d6ce0a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1832520584042127746
+    second: Lit Notches_0
+  - first:
+      213: -8575925226625266950
+    second: Lit Notches_1
+  - first:
+      213: -4619084769071852383
+    second: Lit Notches_2
+  - first:
+      213: 5638585181777321366
+    second: Lit Notches_3
+  - first:
+      213: -8445121341947855678
+    second: Lit Notches_4
+  - first:
+      213: 7633561867044455735
+    second: Lit Notches_5
+  - first:
+      213: -5700612287728838392
+    second: Lit Notches_6
+  - first:
+      213: 6624223039485120552
+    second: Lit Notches_7
+  - first:
+      213: -7020511760568745235
+    second: Lit Notches_8
+  - first:
+      213: 8416663422753087095
+    second: Lit Notches_9
+  - first:
+      213: -2168879183225998018
+    second: Lit Notches_10
+  - first:
+      213: 4154845882325513935
+    second: Lit Notches_11
+  - first:
+      213: 7069320851113126637
+    second: Lit Notches_12
+  - first:
+      213: 8110625033957234144
+    second: Lit Notches_13
+  - first:
+      213: -4473380326551481119
+    second: Lit Notches_14
+  - first:
+      213: -3929115928739126258
+    second: Lit Notches_15
+  - first:
+      213: 6116071689532511529
+    second: Lit Notches_16
+  - first:
+      213: -4072348526221135451
+    second: Lit Notches_17
+  - first:
+      213: -2781836536706108679
+    second: Lit Notches_18
+  - first:
+      213: -8081676514772328061
+    second: Lit Notches_19
+  - first:
+      213: -6404054411379782139
+    second: Lit Notches_20
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 3
+    compressionQuality: 70
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 3
+    compressionQuality: 70
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: 31
+    textureCompression: 3
+    compressionQuality: 70
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: 65
+    textureCompression: 3
+    compressionQuality: 70
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Lit Notches_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 11
+        width: 110
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7ed398ec349196e0800000000000000
+      internalID: -1832520584042127746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
