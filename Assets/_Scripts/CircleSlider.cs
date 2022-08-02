@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CircleSlider : MonoBehaviour
 {
+    public StripValues Stripvalues;
     [SerializeField] Transform handle;
     [SerializeField] Image fill;
    // [SerializeField] Text valTxt;
@@ -23,6 +24,7 @@ public class CircleSlider : MonoBehaviour
             handle.rotation = r;
             angle = ((angle >= 315) ? (angle - 360) : angle) + 45;
             fill.fillAmount = 0.75f - (angle / 360f);
+            Stripvalues.Pan = fill.fillAmount;
             //valTxt.text = Mathf.Round((fill.fillAmount*100)/0.75f).ToString();
         }
     }
