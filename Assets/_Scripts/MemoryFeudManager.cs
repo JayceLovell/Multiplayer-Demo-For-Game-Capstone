@@ -138,7 +138,7 @@ public class MemoryFeudManager : MonoBehaviour
             Debug.Log("Tempscore: " + tempScore);
         }
         Score += (int)tempScore;
-        _uiManager.MessageBoardText("Your scored: " + Score);
+        _uiManager.MessageBoardText("Your scored: " + (int)tempScore);
         _uiManager.RoundEnd();
         RoundStart = false;
     }
