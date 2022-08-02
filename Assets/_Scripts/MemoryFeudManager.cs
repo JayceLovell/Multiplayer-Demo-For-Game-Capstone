@@ -5,38 +5,73 @@ using UnityEngine.UI;
 
 public class MemoryFeudManager : MonoBehaviour
 {
-    private float _score;
+    private int _score;
     private bool _roundStart;
     private int _rounds;
+    private float _userScore;
 
     [SerializeField]
     private string hostAddress;
     /// <summary>
     /// Saving correct values for now should be replaced with real accuracy from sonically
     /// </summary>
-    public enum Correct
+    public enum CorrectStrip0
     {
         Pan = 50,
-        Delay = 50,
-        Reverb = 50,
-        EQ = 50,
+        Delay = 0,
+        Reverb = 0,
+        EQ = 0,
         Volume = 50
     }
-    public float Score
+    public enum CorrectStrip1
+    {
+        Pan = 50,
+        Delay = 0,
+        Reverb = 0,
+        EQ = 0,
+        Volume = 50
+    }
+    public enum CorrectStrip2
+    {
+        Pan = 50,
+        Delay = 0,
+        Reverb = 0,
+        EQ = 0,
+        Volume = 50
+    }
+    public enum CorrectStrip3
+    {
+        Pan = 50,
+        Delay = 0,
+        Reverb = 0,
+        EQ = 0,
+        Volume = 50
+    }
+    public enum CorrectStrip4
+    {
+        Pan = 50,
+        Delay = 0,
+        Reverb = 0,
+        EQ = 0,
+        Volume = 50
+    }
+    public int Score
     {
         get { return _score; }
         set
         {
             _score = value;
+            Debug.Log(GameManager.IsRankMode);
             if (GameManager.IsRankMode)
             {
-
+                _uiManager.AccuracyTextPrecentage.text = Score + " %";
             }
             {
                 if (PlayerPoints == null)
                 {
                     PlayerPoints = GameObject.Find(GameManager.UserID);
                 }
+                _uiManager.MessageBoardText("Your scored: " + (int)_userScore);
                 PlayerPoints.GetComponent<PlayerPoints>().Points = value;
             }
         }
@@ -117,28 +152,250 @@ public class MemoryFeudManager : MonoBehaviour
     public void FinishMix()
     {
         RoundStart = false;
-        float tempScore = 0;
+        _userScore = 0;
+        int _fullScore = 0;
         foreach(StripValues strip in Strips)
         {
-            Debug.Log("Pan: "+strip.Pan);
-            Debug.Log("Delay: " + strip.Delay);
-            Debug.Log("Reverb: " + strip.Reverb);
-            Debug.Log("EQ: " + strip.EQ);
-            Debug.Log("Volume: " + strip.Volume);
+            switch (strip.StripIndex)
+            {
+                case 0:
+                    {
+                        if ((int)CorrectStrip0.Pan == 0 && strip.Pan == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip0.Pan == 0 || strip.Pan == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.Pan * 10 / (int)CorrectStrip0.Pan) * 100;
 
-            tempScore += (strip.Pan/(float)Correct.Pan)*100;
-            Debug.Log("Tempscore: " + tempScore);
-            tempScore += (strip.Delay / (float)Correct.Delay)*100;
-            Debug.Log("Tempscore: " + tempScore);
-            tempScore += (strip.Reverb / (float)Correct.Reverb)*100;
-            Debug.Log("Tempscore: " + tempScore);
-            tempScore += (strip.EQ / (float)Correct.EQ)*100;
-            Debug.Log("Tempscore: " + tempScore);
-            tempScore += ((strip.Volume*100) / (float)Correct.Volume)*100;
-            Debug.Log("Tempscore: " + tempScore);
+                        if ((int)CorrectStrip0.Delay == 0 && strip.Delay == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip0.Delay == 0 || strip.Delay == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.Delay * 10 / (int)CorrectStrip0.Delay) * 100;
+
+                        if ((int)CorrectStrip0.Reverb == 0 && strip.Reverb == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip0.Reverb == 0 || strip.Reverb == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.Reverb * 10 / (int)CorrectStrip0.Reverb) * 100;
+
+                        if ((int)CorrectStrip0.EQ == 0 && strip.EQ == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip0.EQ == 0 || strip.EQ == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.EQ * 10 / (int)CorrectStrip0.EQ) * 100;
+
+                        if ((int)CorrectStrip0.Volume == 0 && strip.Volume == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip0.Volume == 0 || strip.Volume == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.Volume * 10 / (int)CorrectStrip0.Volume) * 100;
+
+
+                        _fullScore += (int)CorrectStrip0.EQ;
+                        _fullScore += (int)CorrectStrip0.Reverb;
+                        _fullScore += (int)CorrectStrip0.Delay;
+                        _fullScore += (int)CorrectStrip0.Pan;
+                        _fullScore += (int)CorrectStrip0.Volume;
+                    
+                    break;
+                    }
+                case 1:
+                    {
+                        if ((int)CorrectStrip1.Pan == 0 && strip.Pan == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip1.Pan == 0 || strip.Pan == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.Pan * 100 / (int)CorrectStrip1.Pan) * 100;
+
+                        if ((int)CorrectStrip1.Delay == 0 && strip.Delay == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip1.Delay == 0 || strip.Delay == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.Delay * 100 / (int)CorrectStrip1.Delay) * 100;
+
+                        if ((int)CorrectStrip1.Reverb == 0 && strip.Reverb == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip1.Reverb == 0 || strip.Reverb == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.Reverb * 100 / (int)CorrectStrip1.Reverb) * 100;
+
+                        if ((int)CorrectStrip1.EQ == 0 && strip.EQ == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip1.EQ == 0 || strip.EQ == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.EQ * 100 / (int)CorrectStrip1.EQ) * 100;
+
+                        if ((int)CorrectStrip1.Volume == 0 && strip.Volume == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip1.Volume == 0 || strip.Volume == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.Volume * 100 / (int)CorrectStrip1.Volume) * 100;
+
+
+                        _fullScore += (int)CorrectStrip1.EQ;
+                        _fullScore += (int)CorrectStrip1.Reverb;
+                        _fullScore += (int)CorrectStrip1.Delay;
+                        _fullScore += (int)CorrectStrip1.Pan;
+                        _fullScore += (int)CorrectStrip1.Volume;
+
+                        break;
+                    }
+                case 2:
+                    {
+                        if ((int)CorrectStrip2.Pan == 0 && strip.Pan == 0)
+                            _userScore += 100;
+                        else if (CorrectStrip2.Pan == 0 || strip.Pan == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.Pan * 100 / (int)CorrectStrip2.Pan) * 100;
+
+                        if ((int)CorrectStrip2.Delay == 0 && strip.Delay == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip2.Delay == 0 || strip.Delay == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.Delay * 100 / (int)CorrectStrip2.Delay) * 100;
+
+                        if ((int)CorrectStrip2.Reverb == 0 && strip.Reverb == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip2.Reverb == 0 || strip.Reverb == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.Reverb * 100 / (int)CorrectStrip2.Reverb) * 100;
+
+                        if ((int)CorrectStrip2.EQ == 0 && strip.EQ == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip2.EQ == 0 || strip.EQ == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.EQ * 100 / (int)CorrectStrip2.EQ) * 100;
+
+                        if ((int)CorrectStrip2.Volume == 0 && strip.Volume == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip2.Volume == 0 || strip.Volume == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.Volume * 100 / (int)CorrectStrip2.Volume) * 100;
+
+
+                        _fullScore += (int)CorrectStrip2.EQ;
+                        _fullScore += (int)CorrectStrip2.Reverb;
+                        _fullScore += (int)CorrectStrip2.Delay;
+                        _fullScore += (int)CorrectStrip2.Pan;
+                        _fullScore += (int)CorrectStrip2.Volume;
+
+                        break;
+                    }
+                case 3:
+                    {
+                        if ((int)CorrectStrip3.Pan == 0 && strip.Pan == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip3.Pan == 0 || strip.Pan == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.Pan * 100 / (int)CorrectStrip3.Pan) * 100;
+
+                        if ((int)CorrectStrip3.Delay == 0 && strip.Delay == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip3.Delay == 0 || strip.Delay == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.Delay * 100 / (int)CorrectStrip3.Delay) * 100;
+
+                        if ((int)CorrectStrip3.Reverb == 0 && strip.Reverb == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip3.Reverb == 0 || strip.Reverb == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.Reverb * 100 / (int)CorrectStrip3.Reverb) * 100;
+
+                        if ((int)CorrectStrip3.EQ == 0 && strip.EQ == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip3.EQ == 0 || strip.EQ == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.EQ * 100 / (int)CorrectStrip3.EQ) * 100;
+
+                        if ((int)CorrectStrip3.Volume == 0 && strip.Volume == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip3.Volume == 0 || strip.Volume == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.Volume * 100 / (int)CorrectStrip3.Volume) * 100;
+
+
+                        _fullScore += (int)CorrectStrip3.EQ;
+                        _fullScore += (int)CorrectStrip3.Reverb;
+                        _fullScore += (int)CorrectStrip3.Delay;
+                        _fullScore += (int)CorrectStrip3.Pan;
+                        _fullScore += (int)CorrectStrip3.Volume;
+
+                        break;
+                    }
+                case 4:
+                    {
+                        if ((int)CorrectStrip4.Pan == 0 && strip.Pan == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip4.Pan == 0 || strip.Pan == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.Pan * 100 / (int)CorrectStrip4.Pan) * 100;
+
+                        if ((int)CorrectStrip4.Delay == 0 && strip.Delay == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip4.Delay == 0 || strip.Delay == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.Delay * 100 / (int)CorrectStrip4.Delay) * 100;
+
+                        if ((int)CorrectStrip4.Reverb == 0 && strip.Reverb == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip4.Reverb == 0 || strip.Reverb == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.Reverb * 100 / (int)CorrectStrip4.Reverb) * 100;
+
+                        if ((int)CorrectStrip4.EQ == 0 && strip.EQ == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip4.EQ == 0 || strip.EQ == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.EQ * 100 / (int)CorrectStrip4.EQ) * 100;
+
+                        if ((int)CorrectStrip4.Volume == 0 && strip.Volume == 0)
+                            _userScore += 100;
+                        else if ((int)CorrectStrip4.Volume == 0 || strip.Volume == 0)
+                            _userScore += 0;
+                        else
+                            _userScore += (strip.Volume * 100 / (int)CorrectStrip4.Volume) * 100;
+
+
+                        _fullScore += (int)CorrectStrip4.EQ;
+                        _fullScore += (int)CorrectStrip4.Reverb;
+                        _fullScore += (int)CorrectStrip4.Delay;
+                        _fullScore += (int)CorrectStrip4.Pan;
+                        _fullScore += (int)CorrectStrip4.Volume;
+
+                        break;
+                    }
+            }
+            Debug.Log("After Switch User Score: " + (int)_userScore + " FullScore: " + _fullScore);
         }
-        Score += (int)tempScore;
-        _uiManager.MessageBoardText("Your scored: " + (int)tempScore);
+        if (GameManager.IsRankMode)
+            Score = ((int)_userScore / _fullScore) * 100;
+        else
+            Score += (int)_userScore;
+        
         _uiManager.RoundEnd();
         RoundStart = false;
     }

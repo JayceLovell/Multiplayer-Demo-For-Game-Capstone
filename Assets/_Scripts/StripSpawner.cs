@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StripSpawner : MonoBehaviour
 {
+    private int _index;
     public GameObject Prefab;
 
     //Preset for now
@@ -17,6 +18,8 @@ public class StripSpawner : MonoBehaviour
         {
             GameObject Strip = Instantiate(Prefab, this.transform);
             Strip.GetComponent<StripValues>().StripName = title;
+            Strip.GetComponent<StripValues>().StripIndex = _index;
+            _index++;
         }
     }
 

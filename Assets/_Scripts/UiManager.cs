@@ -25,6 +25,7 @@ public class UiManager : MonoBehaviour
     public GameObject MySong;
     public GameObject Clock;
     public GameObject SubmitButton;
+    public Text AccuracyTextPrecentage;
     public Text PopUpMessageBoardText;
     
     public bool IsSongPlaying
@@ -62,10 +63,6 @@ public class UiManager : MonoBehaviour
         networkmanager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
     /// <summary>
     /// Starts game
     /// </summary>
@@ -85,30 +82,28 @@ public class UiManager : MonoBehaviour
         SubmitButton.GetComponent<Button>().interactable = false;
         SubmitButton.GetComponent<Button>().onClick.AddListener(_memoryFeudManager.FinishMix);
         SubmitAnimator=SubmitButton.transform.GetChild(0).gameObject.GetComponent<Animator>();
+        if (_gameManager.IsRankMode)
+        {
+            AccuracyTextPrecentage = GameObject.Find("AccuracyPrecentage").GetComponent<Text>();
+        }
     }
     /// <summary>
     /// Bring up popups to tell player
-    /// TODO @Jelani Animation for smooth effect
     /// </summary>
     public void BringUpPopUps()
     {
         RoundStart();
         MessageBoardText("Now Mix");
-        //Using set active until animation is implementated
-        //SubmitButton.transform.GetChild(0).gameObject.SetActive(true);
         SubmitAnimator.SetBool("visible", true);
         PopUpMessageBoard.SetBool("visible", true);
         StartCoroutine(WaitForSeconds(10, BringDownPopUps));
     }
     /// <summary>
     /// Brings down Popups after 10 seconds
-    /// @TODO @Jelani u know what to do 
     /// </summary>
     public void BringDownPopUps()
     {
         PopUpMessageBoard.SetBool("visible", false);
-        //Using set active until animation is implementated
-        //SubmitButton.transform.GetChild(0).gameObject.SetActive(false);
         SubmitAnimator.SetBool("visible", false);
     }
     /// <summary>

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class StripValues : MonoBehaviour
 {
     private string _stripName;
+    private int _stripIndex;
     private float _reverb;
     private float _delay;
     private float _pan;
@@ -20,6 +21,12 @@ public class StripValues : MonoBehaviour
             _stripName = value;
             TitleBox.GetComponent<Text>().text = StripName;
         }
+    }
+    public int StripIndex
+    {
+        get { return _stripIndex; }
+        set { _stripIndex = value;}
+          
     }
     public float Reverb
     {
@@ -45,5 +52,13 @@ public class StripValues : MonoBehaviour
     {
         get { return _volume; }
         set { _volume = value; }
+    }
+    void Start()
+    {
+        Reverb = 0;
+        Delay = 0;
+        Pan = 0;
+        EQ = 0;
+        Volume = 0;
     }
 }

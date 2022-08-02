@@ -30,17 +30,6 @@ public class LobbyController : MonoBehaviour
     public bool IsHosting;
     //end of testing variables
 
-    /// <summary>
-    /// If change game manager value of rank or not
-    /// </summary>
-    public bool IsRankMode
-    {
-        get { return _gameManager.IsRankMode; }
-        set { 
-            _gameManager.IsRankMode = value;
-        }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
