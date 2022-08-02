@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03dafff9f143b21438514be3984f1be3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 557367557226784264, guid: b420bafb914e4d342b4540b7aee9cef3, type: 3}
+  Prefab: {fileID: 6566537015041564855, guid: c7ce87eb337e54b4c8049add7cbf14c5, type: 3}
   Titles:
   - Vocal
   - Choir
