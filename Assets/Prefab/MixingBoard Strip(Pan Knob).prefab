@@ -1283,10 +1283,10 @@ RectTransform:
   m_Father: {fileID: 1337334906447293838}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -227.95439}
-  m_SizeDelta: {x: 120, y: 455.90878}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1637447774614200052
 MonoBehaviour:
@@ -2715,6 +2715,7 @@ GameObject:
   - component: {fileID: 1349388621926866529}
   - component: {fileID: 8731912502298490559}
   - component: {fileID: 6936092418484239793}
+  - component: {fileID: 7967158272462998445}
   m_Layer: 5
   m_Name: fill
   m_TagString: Untagged
@@ -2779,6 +2780,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7967158272462998445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4572548668067434325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &4616824203120972500
 GameObject:
   m_ObjectHideFlags: 0
@@ -3829,7 +3843,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -395.69, y: -58.002}
+  m_AnchoredPosition: {x: -395.69006, y: -58.001953}
   m_SizeDelta: {x: 225, y: 762.70935}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3425151820371051558
@@ -4067,10 +4081,10 @@ RectTransform:
   m_Father: {fileID: 1337334906447293838}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 172.5, y: -227.95439}
-  m_SizeDelta: {x: 105, y: 455.90878}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8483210860184898801
 MonoBehaviour:
@@ -4545,6 +4559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e4a4d33872b1848b2f05dcd74330b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Stripvalues: {fileID: 5272761897034403067}
   handle: {fileID: 2376896385647082224}
   fill: {fileID: 6936092418484239793}
 --- !u!1 &8446887955064368758

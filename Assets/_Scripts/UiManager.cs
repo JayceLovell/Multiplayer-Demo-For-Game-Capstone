@@ -134,6 +134,8 @@ public class UiManager : MonoBehaviour
     public void RoundEnd()
     {
         MySong.SetActive(false);
+        DisplaySong.GetComponent<Text>().text = "Song Name";
+        DisplaySong.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
         SubmitButton.GetComponent<Button>().interactable = false;
         GameObject.Find("BtnReady").GetComponent<Button>().interactable = true;
     }
