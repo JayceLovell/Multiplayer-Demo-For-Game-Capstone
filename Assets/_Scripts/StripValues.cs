@@ -30,27 +30,27 @@ public class StripValues : MonoBehaviour
     }
     public float Reverb
     {
-        get { return _reverb; }
+        get { return _reverb * 100; }
         set { _reverb = value; }
     }
     public float Delay
     {
-        get { return _delay; }
+        get { return _delay * 100; }
         set { _delay = value; }
     }
     public float Pan
     {
-        get { return _pan; }
+        get { return _pan * 100; }
         set { _pan = value; }
     }
     public float EQ
     {
-      get { return _EQ; }
+      get { return _EQ * 100; }
       set {_EQ = value;}
     }
     public float Volume
     {
-        get { return _volume; }
+        get { return _volume*100; }
         set { _volume = value; }
     }
     void Start()
