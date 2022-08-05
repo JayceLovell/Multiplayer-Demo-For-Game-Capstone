@@ -157,6 +157,16 @@ public class UiManager : MonoBehaviour
             Debug.Log("Ending Client");
         }
     }
+    /// <summary>
+    /// Game is End
+    /// Will have to do firebase stuff here to give player rewards.
+    /// Display winning player
+    /// </summary>
+    public void GameEnd()
+    {
+        MessageBoardText(Leaderboard.GetComponent<PointLeaderboardManager>().Children[0].name + " has won.");
+        StartCoroutine(WaitForSeconds(5, Exit));
+    }
     public void DROP_DOWN_CLICK(Animator anim)
     {
         IsActiveMenu = !IsActiveMenu;

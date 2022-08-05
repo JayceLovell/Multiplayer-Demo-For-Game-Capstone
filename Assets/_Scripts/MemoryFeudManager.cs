@@ -90,7 +90,13 @@ public class MemoryFeudManager : MonoBehaviour
     public int Rounds
     {
         get { return _rounds; }
-        set { _rounds = value; }
+        set { 
+            _rounds = value;
+            if (_rounds == 5)
+            {
+                GameEnd();
+            }
+        }
     }
     /// <summary>
     /// Board for 1v1
@@ -419,5 +425,14 @@ public class MemoryFeudManager : MonoBehaviour
     private void PlaySound()
     { 
         MusicPlayer.GetComponent<MusicPlayer>().Play();
+    }
+    /// <summary>
+    /// Game is End
+    /// Will have to do firebase stuff here to give player rewards.
+    /// Display winning player
+    /// </summary>
+    private void GameEnd()
+    {
+        _uiManager.GameEnd();
     }
 }
