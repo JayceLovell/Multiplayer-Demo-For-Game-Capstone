@@ -13,12 +13,10 @@ public class PointLeaderboardManager : MonoBehaviour
             Children.Add(child.gameObject);
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    /// <summary>
+    /// Call this when new player joins
+    /// should be called with firebase networking
+    /// </summary>
     public void RefreshBoard()
     {
         Children.Clear();
@@ -33,10 +31,14 @@ public class PointLeaderboardManager : MonoBehaviour
     /// </summary>
     public void LeaderBoardCheck()
     {
-        //to get what points the player have
-        //Children[0].GetComponent<PlayerPoints>().Points;
+        Children.Sort(SortByScore);
 
-        //To set the poisition of the player points object
-        Children[0].transform.SetSiblingIndex(0);
+            ////To set the poisition of the player points object
+            //Children[0].transform.SetSiblingIndex(position);
+
+    }
+    private int SortByScore(GameObject p1, GameObject p2)
+    {
+        return p1.GetComponent<PlayerPoints>().Points.CompareTo(p2.GetComponent<PlayerPoints>().Points);
     }
 }

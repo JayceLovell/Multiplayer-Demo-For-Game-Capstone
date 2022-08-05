@@ -83,9 +83,14 @@ public class MemoryFeudManager : MonoBehaviour
             _roundStart = value;
             if (_roundStart)
             {
-                _rounds++;
+                Rounds++;
             }
         }
+    }
+    public int Rounds
+    {
+        get { return _rounds; }
+        set { _rounds = value; }
     }
     /// <summary>
     /// Board for 1v1
@@ -147,7 +152,6 @@ public class MemoryFeudManager : MonoBehaviour
     /// or
     /// time runs out
     /// will do calculations of accuracy
-    /// TODO Check my math @Jelani
     /// </summary>
     public void FinishMix()
     {
@@ -391,7 +395,6 @@ public class MemoryFeudManager : MonoBehaviour
             }
             Debug.Log("After Switch for strip:"+strip.StripIndex+" User Score: " + _userScore + " FullScore: " + _fullScore);
         }
-        Debug.Log(_userScore / _fullScore);
         if (GameManager.IsRankMode)
             Score = (int)((_userScore / _fullScore) * 100);
         else

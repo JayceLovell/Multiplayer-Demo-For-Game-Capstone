@@ -25,6 +25,7 @@ public class UiManager : MonoBehaviour
     public GameObject MySong;
     public GameObject Clock;
     public GameObject SubmitButton;
+    public GameObject Leaderboard;
     public Text AccuracyTextPrecentage;
     public Text PopUpMessageBoardText;
     
@@ -86,6 +87,10 @@ public class UiManager : MonoBehaviour
         {
             AccuracyTextPrecentage = GameObject.Find("AccuracyPrecentage").GetComponent<Text>();
         }
+        else
+        {
+            Leaderboard = GameObject.Find("Points Leader board");
+        }
     }
     /// <summary>
     /// Bring up popups to tell player
@@ -133,6 +138,7 @@ public class UiManager : MonoBehaviour
         DisplaySong.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
         SubmitButton.GetComponent<Button>().interactable = false;
         GameObject.Find("BtnReady").GetComponent<Button>().interactable = true;
+        Leaderboard.GetComponent<PointLeaderboardManager>().LeaderBoardCheck();
     }
     /// <summary>
     /// TODO
