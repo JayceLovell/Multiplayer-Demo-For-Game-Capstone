@@ -31,13 +31,19 @@ public class PointLeaderboardManager : MonoBehaviour
     /// </summary>
     public void LeaderBoardCheck()
     {
-        Children.Sort(SortByScore);
+        Children.Sort(CompareScores);
+        Children.Reverse();
+        
+        foreach (GameObject child in Children)
+        {
+            child.transform.parent = null;
+            child.transform.parent = this.transform;
+        }
 
-            ////To set the poisition of the player points object
-            //Children[0].transform.SetSiblingIndex(position);
-
+        ////To set the poisition of the player points object
+        //Children[0].transform.SetSiblingIndex(position);
     }
-    private int SortByScore(GameObject p1, GameObject p2)
+    private int CompareScores(GameObject p1, GameObject p2)
     {
         return p1.GetComponent<PlayerPoints>().Points.CompareTo(p2.GetComponent<PlayerPoints>().Points);
     }
