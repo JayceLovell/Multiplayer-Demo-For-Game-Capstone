@@ -26,7 +26,6 @@ public class PointLeaderboardManager : MonoBehaviour
         }
     }
     /// <summary>
-    /// TODO #2925127468
     /// rearrange the boarderboard based on the player points
     /// </summary>
     public void LeaderBoardCheck()
@@ -40,8 +39,6 @@ public class PointLeaderboardManager : MonoBehaviour
             child.transform.parent = this.transform;
         }
 
-        ////To set the poisition of the player points object
-        //Children[0].transform.SetSiblingIndex(position);
     }
     private int CompareScores(GameObject p1, GameObject p2)
     {

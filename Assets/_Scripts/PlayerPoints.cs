@@ -15,13 +15,14 @@ public class PlayerPoints : MonoBehaviour
     private GameManager _gameManager;
 
     public float _points;
+    public string Name;
 
     public float Points
     {
         get { return _points; }
         set { 
             _points = value;
-            _displayPoints.text = _gameManager.UserID + ":" + Points;
+            _displayPoints.text = Name + ":" + Points;
         }
     }
 
@@ -32,10 +33,7 @@ public class PlayerPoints : MonoBehaviour
         _displayPoints = GetComponent<TextMeshProUGUI>();
         _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         Points = 0;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {        
+        Name=_gameManager.UserID;
+        _displayPoints.text = Name + ":" + Points;
     }
 }

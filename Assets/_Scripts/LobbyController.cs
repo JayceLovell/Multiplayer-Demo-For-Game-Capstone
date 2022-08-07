@@ -11,7 +11,14 @@ public class LobbyController : MonoBehaviour
     /// </summary>
     public string UserID;
 
+    /// <summary>
+    /// this can be removed or changed for the mix master project
+    /// </summary>
     private GameManager _gameManager;
+
+    /// <summary>
+    /// for the animations of the menu
+    /// </summary>
     public bool IsActiveMenu;
 
     //Testing variables
@@ -19,12 +26,14 @@ public class LobbyController : MonoBehaviour
     /// <summary>
     /// Information to join Host
     /// This is for LAN only!!!
+    /// /// can be deleted after port
     /// </summary>
     [Tooltip("Enter address of person connecting to.")]
     public string HostAddress;
     /// <summary>
     /// If user hosting game or not
     /// This is for LAN only!!!
+    /// can be deleted after port
     /// </summary>
     [Tooltip("Look at networkManager for your ipaddress to share")]
     public bool IsHosting;
@@ -33,7 +42,10 @@ public class LobbyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Finds the game manager
         _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
+        //Not fully need can be deleted after port
         GameObject.Find("txtVersion").GetComponent<Text>().text = "Version: " + Application.version;
     }
     void Update()
