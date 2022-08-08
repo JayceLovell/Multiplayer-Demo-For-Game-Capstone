@@ -474,6 +474,8 @@ MonoBehaviour:
   MySong: {fileID: 2141110482}
   Clock: {fileID: 278955318}
   SubmitButton: {fileID: 0}
+  Leaderboard: {fileID: 0}
+  AccuracyTextPrecentage: {fileID: 0}
   PopUpMessageBoardText: {fileID: 247777371}
 --- !u!4 &339279583
 Transform:
@@ -1064,7 +1066,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1525123715
 RectTransform:
   m_ObjectHideFlags: 0
