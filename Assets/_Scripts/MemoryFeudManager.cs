@@ -18,41 +18,41 @@ public class MemoryFeudManager : MonoBehaviour
     public enum CorrectStrip0
     {
         Pan = 50,
-        Delay = 0,
-        Reverb = 0,
-        EQ = 0,
+        Delay = 50,
+        Reverb = 50,
+        EQ = 50,
         Volume = 50
     }
     public enum CorrectStrip1
     {
         Pan = 50,
-        Delay = 0,
-        Reverb = 0,
-        EQ = 0,
+        Delay = 50,
+        Reverb = 50,
+        EQ = 50,
         Volume = 50
     }
     public enum CorrectStrip2
     {
         Pan = 50,
-        Delay = 0,
-        Reverb = 0,
-        EQ = 0,
+        Delay = 50,
+        Reverb = 50,
+        EQ = 50,
         Volume = 50
     }
     public enum CorrectStrip3
     {
         Pan = 50,
-        Delay = 0,
-        Reverb = 0,
-        EQ = 0,
+        Delay = 50,
+        Reverb = 50,
+        EQ = 50,
         Volume = 50
     }
     public enum CorrectStrip4
     {
         Pan = 50,
-        Delay = 0,
-        Reverb = 0,
-        EQ = 0,
+        Delay = 50,
+        Reverb = 50,
+        EQ = 50,
         Volume = 50
     }
     public int Score
