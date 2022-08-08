@@ -13,7 +13,7 @@ public class UiManager : MonoBehaviour
 {
     public bool IsActiveMenu;
 
-    private MemoryFeudManager _accuacyBattleManager;
+    private MemoryFeudManager _memoryFeudManager;
     private MusicPlayer _musicPlayer;
     private GameManager _gameManager;
     private NetworkManager networkmanager;
@@ -25,6 +25,8 @@ public class UiManager : MonoBehaviour
     public GameObject MySong;
     public GameObject Clock;
     public GameObject SubmitButton;
+    public GameObject Leaderboard;
+    public Text AccuracyTextPrecentage;
     public Text PopUpMessageBoardText;
     
     public bool IsSongPlaying
@@ -35,6 +37,7 @@ public class UiManager : MonoBehaviour
             if (isSongPlaying)
             {
                 Reference.SetActive(true);
+                MySong.SetActive(false);
                 DisplaySong.GetComponent<Text>().text = _musicPlayer.SongName;
                 DisplaySong.GetComponent<Text>().alignment = TextAnchor.LowerLeft;
                 Clock.GetComponent<Clock>().AmoutOfTime = 30;
@@ -45,6 +48,9 @@ public class UiManager : MonoBehaviour
                 MySong.SetActive(true);
                 DisplaySong.GetComponent<Text>().text = _musicPlayer.SongName;
                 DisplaySong.GetComponent<Text>().alignment = TextAnchor.LowerLeft;
+                _memoryFeudManager.RoundStart = true;
+                Clock.GetComponent<Clock>().AmoutOfTime = 60f;
+                BringUpPopUps();
             }
         }
     }
@@ -53,21 +59,17 @@ public class UiManager : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        _accuacyBattleManager = GameObject.Find("MemoryFeudManager").GetComponent<MemoryFeudManager>();
+        _memoryFeudManager = GameObject.Find("MemoryFeudManager").GetComponent<MemoryFeudManager>();
         _musicPlayer = GameObject.Find("Music Player").GetComponent<MusicPlayer>();
         networkmanager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
     }
     /// <summary>
     /// Starts game
     /// </summary>
     public void Ready()
     {
-        _accuacyBattleManager.GameStart();
+        _memoryFeudManager.GameStart();
         GameObject.Find("BtnReady").GetComponent<Button>().interactable = false;
         MessageBoardText("listen to song carefully");
     }
@@ -79,32 +81,34 @@ public class UiManager : MonoBehaviour
         GameObject.Find("BtnReady").GetComponent<Button>().onClick.AddListener(GameObject.Find("UI Manager").GetComponent<UiManager>().Ready);
         SubmitButton = GameObject.Find("BtnSubmit");
         SubmitButton.GetComponent<Button>().interactable = false;
-        SubmitButton.GetComponent<Button>().onClick.AddListener(_accuacyBattleManager.FinishMix);
+        SubmitButton.GetComponent<Button>().onClick.AddListener(_memoryFeudManager.FinishMix);
         SubmitAnimator=SubmitButton.transform.GetChild(0).gameObject.GetComponent<Animator>();
+        if (_gameManager.IsRankMode)
+        {
+            AccuracyTextPrecentage = GameObject.Find("AccuracyPrecentage").GetComponent<Text>();
+        }
+        else
+        {
+            Leaderboard = GameObject.Find("Points Leader board");
+        }
     }
     /// <summary>
     /// Bring up popups to tell player
-    /// TODO @Jelani Animation for smooth effect
     /// </summary>
     public void BringUpPopUps()
     {
         RoundStart();
         MessageBoardText("Now Mix");
-        //Using set active until animation is implementated
-        //SubmitButton.transform.GetChild(0).gameObject.SetActive(true);
         SubmitAnimator.SetBool("visible", true);
         PopUpMessageBoard.SetBool("visible", true);
         StartCoroutine(WaitForSeconds(10, BringDownPopUps));
     }
     /// <summary>
     /// Brings down Popups after 10 seconds
-    /// @TODO @Jelani u know what to do 
     /// </summary>
     public void BringDownPopUps()
     {
         PopUpMessageBoard.SetBool("visible", false);
-        //Using set active until animation is implementated
-        //SubmitButton.transform.GetChild(0).gameObject.SetActive(false);
         SubmitAnimator.SetBool("visible", false);
     }
     /// <summary>
@@ -129,8 +133,12 @@ public class UiManager : MonoBehaviour
     /// </summary>
     public void RoundEnd()
     {
+        MySong.SetActive(false);
+        DisplaySong.GetComponent<Text>().text = "Song Name";
+        DisplaySong.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
         SubmitButton.GetComponent<Button>().interactable = false;
         GameObject.Find("BtnReady").GetComponent<Button>().interactable = true;
+        Leaderboard.GetComponent<PointLeaderboardManager>().LeaderBoardCheck();
     }
     /// <summary>
     /// TODO
@@ -148,6 +156,16 @@ public class UiManager : MonoBehaviour
             networkmanager.StopClient();
             Debug.Log("Ending Client");
         }
+    }
+    /// <summary>
+    /// Game is End
+    /// Will have to do firebase stuff here to give player rewards.
+    /// Display winning player
+    /// </summary>
+    public void GameEnd()
+    {
+        MessageBoardText(Leaderboard.GetComponent<PointLeaderboardManager>().Children[0].name + " has won.");
+        StartCoroutine(WaitForSeconds(5, Exit));
     }
     public void DROP_DOWN_CLICK(Animator anim)
     {

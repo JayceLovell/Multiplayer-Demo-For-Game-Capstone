@@ -2235,7 +2235,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1080, y: 1920}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
@@ -2781,7 +2781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b836d00620c7b4bb65b290e0914c38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _userID: 
+  UserID: 
   IsActiveMenu: 0
   isTestMode: 0
   HostAddress: 
@@ -8867,7 +8867,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -1447.89, y: -65.01172}
-  m_SizeDelta: {x: 304.3306, y: 74}
+  m_SizeDelta: {x: 304.33057, y: 74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &6932020413604417743
 RectTransform:
